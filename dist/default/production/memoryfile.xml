@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/production/TIMER_LIGHT.X.production.hex">
+    <memory name="program">
+      <units>words</units>
+      <length>1024</length>
+      <used>264</used>
+      <free>760</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>64</length>
+      <used>14</used>
+      <free>50</free>
+    </memory>
+  </executable>
+</project>

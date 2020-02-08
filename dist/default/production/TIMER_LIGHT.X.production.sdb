@@ -1,0 +1,125 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F675 ]
+[d frameptr 0 ]
+"115 /home/amauri/Área de Trabalho/ArduinoISP/TIMER_LIGHT.X/main.c
+[e E726 . `uc
+modo_desligado 0
+modo_timer 1
+modo_sempre_ligado 2
+]
+"10 /opt/microchip/xc8/v2.10/pic/sources/c90/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 /opt/microchip/xc8/v2.10/pic/sources/c90/common/Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 /opt/microchip/xc8/v2.10/pic/sources/c90/pic/__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"104 /home/amauri/Área de Trabalho/ArduinoISP/TIMER_LIGHT.X/main.c
+[v _main main `(i  1 e 2 0 ]
+"130
+[v _config_osc config_osc `(v  1 e 1 0 ]
+"142
+[v _config_mcu config_mcu `(v  1 e 1 0 ]
+"163
+[v _config_var config_var `(v  1 e 1 0 ]
+"181
+[v _config_TM1 config_TM1 `(v  1 e 1 0 ]
+"189
+[v _timer_on timer_on `(v  1 e 1 0 ]
+"230
+[v _read_button read_button `(v  1 e 1 0 ]
+"275
+[v _isr isr `II(v  1 e 1 0 ]
+"459 /opt/microchip/xc8/v2.10/pic/include/pic12f675.h
+[v _TMR1L TMR1L `VEuc  1 e 1 @14 ]
+"479
+[v _TMR1H TMR1H `VEuc  1 e 1 @15 ]
+"499
+[v _T1CON T1CON `VEuc  1 e 1 @16 ]
+"564
+[v _CMCON CMCON `VEuc  1 e 1 @25 ]
+"797
+[v _TRISIO TRISIO `VEuc  1 e 1 @133 ]
+"989
+[v _WPU WPU `VEuc  1 e 1 @149 ]
+"1404
+[v _ANSEL ANSEL `VEuc  1 e 1 @159 ]
+"1573
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"1585
+[v _GP0 GP0 `VEb  1 e 0 @40 ]
+"1588
+[v _GP1 GP1 `VEb  1 e 0 @41 ]
+"1591
+[v _GP2 GP2 `VEb  1 e 0 @42 ]
+"1597
+[v _GP4 GP4 `VEb  1 e 0 @44 ]
+"1600
+[v _GP5 GP5 `VEb  1 e 0 @45 ]
+"1603
+[v _GPIE GPIE `VEb  1 e 0 @91 ]
+"1606
+[v _GPIF GPIF `VEb  1 e 0 @88 ]
+"1636
+[v _IOC0 IOC0 `VEb  1 e 0 @1200 ]
+"1675
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"1738
+[v _TMR1IE TMR1IE `VEb  1 e 0 @1120 ]
+"1741
+[v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
+"1744
+[v _TMR1ON TMR1ON `VEb  1 e 0 @128 ]
+"80 /home/amauri/Área de Trabalho/ArduinoISP/TIMER_LIGHT.X/main.c
+[v _modo modo `uc  1 e 1 0 ]
+"81
+[v _timer_out timer_out `uc  1 e 1 0 ]
+"82
+[v _count_button_press count_button_press `uc  1 e 1 0 ]
+"104
+[v _main main `(i  1 e 2 0 ]
+{
+"124
+} 0
+"189
+[v _timer_on timer_on `(v  1 e 1 0 ]
+{
+"191
+[v timer_on@timer_cont_min timer_cont_min `i  1 a 2 7 ]
+"190
+[v timer_on@timer_cont_seg timer_cont_seg `i  1 a 2 5 ]
+"227
+} 0
+"230
+[v _read_button read_button `(v  1 e 1 0 ]
+{
+"266
+} 0
+"163
+[v _config_var config_var `(v  1 e 1 0 ]
+{
+"173
+} 0
+"130
+[v _config_osc config_osc `(v  1 e 1 0 ]
+{
+"135
+} 0
+"142
+[v _config_mcu config_mcu `(v  1 e 1 0 ]
+{
+"157
+} 0
+"181
+[v _config_TM1 config_TM1 `(v  1 e 1 0 ]
+{
+"186
+} 0
+"275
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"301
+} 0
