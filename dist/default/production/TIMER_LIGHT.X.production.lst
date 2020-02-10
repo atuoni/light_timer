@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Sat Feb  8 01:16:32 2020
+                                                                                               Mon Feb 10 18:43:49 2020
 
 Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
      1                           	processor	12F675
@@ -133,59 +133,59 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    119  0010                     _T1CON	set	16
    120  0019                     _CMCON	set	25
    121  0060                     _TMR1IF	set	96
-   122  0058                     _GPIF	set	88
-   123  0080                     _TMR1ON	set	128
-   124  005B                     _GPIE	set	91
-   125  005E                     _PEIE	set	94
-   126  005F                     _GIE	set	95
-   127  002D                     _GP5	set	45
-   128  002C                     _GP4	set	44
-   129  002A                     _GP2	set	42
-   130  0029                     _GP1	set	41
-   131  0028                     _GP0	set	40
-   132  0095                     _WPU	set	149
-   133  0085                     _TRISIO	set	133
-   134  009F                     _ANSEL	set	159
-   135  0460                     _TMR1IE	set	1120
-   136  04B0                     _IOC0	set	1200
-   137                           
-   138                           ; #config settings
-   139  0000                     
-   140                           	psect	cinit
-   141  000C                     start_initialization:	
-   142  000C                     __initialization:	
-   143                           
-   144                           ; Clear objects allocated to BANK0
-   145  000C  1283               	bcf	3,5	;RP0=0, select bank0
-   146  000D  01A9               	clrf	__pbssBANK0& (0+127)
-   147  000E  01AA               	clrf	(__pbssBANK0+1)& (0+127)
-   148  000F  01AB               	clrf	(__pbssBANK0+2)& (0+127)
-   149  0010                     end_of_initialization:	
-   150                           ;End of C runtime variable initialization code
-   151                           
-   152  0010                     __end_of__initialization:	
-   153  0010  0183               	clrf	3
-   154  0011  28EA               	ljmp	_main	;jump to C main() function
-   155                           
-   156                           	psect	bssBANK0
-   157  0029                     __pbssBANK0:	
-   158  0029                     _count_button_press:	
-   159  0029                     	ds	1
-   160  002A                     _timer_out:	
-   161  002A                     	ds	1
-   162  002B                     _modo:	
-   163  002B                     	ds	1
-   164                           
-   165                           	psect	cstackCOMMON
-   166  0000                     __pcstackCOMMON:	
-   167  0000                     ??_config_osc:	
-   168  0000                     ??_config_mcu:	
+   122  0080                     _TMR1ON	set	128
+   123  005E                     _PEIE	set	94
+   124  005F                     _GIE	set	95
+   125  002D                     _GP5	set	45
+   126  002C                     _GP4	set	44
+   127  002A                     _GP2	set	42
+   128  0029                     _GP1	set	41
+   129  0028                     _GP0	set	40
+   130  0095                     _WPU	set	149
+   131  0085                     _TRISIO	set	133
+   132  009F                     _ANSEL	set	159
+   133  0460                     _TMR1IE	set	1120
+   134                           
+   135                           ; #config settings
+   136  0000                     
+   137                           	psect	cinit
+   138  000C                     start_initialization:	
+   139  000C                     __initialization:	
+   140                           
+   141                           ; Clear objects allocated to BANK0
+   142  000C  1283               	bcf	3,5	;RP0=0, select bank0
+   143  000D  01A8               	clrf	__pbssBANK0& (0+127)
+   144  000E  01A9               	clrf	(__pbssBANK0+1)& (0+127)
+   145  000F  01AA               	clrf	(__pbssBANK0+2)& (0+127)
+   146  0010                     end_of_initialization:	
+   147                           ;End of C runtime variable initialization code
+   148                           
+   149  0010                     __end_of__initialization:	
+   150  0010  0183               	clrf	3
+   151  0011  28E2               	ljmp	_main	;jump to C main() function
+   152                           
+   153                           	psect	bssBANK0
+   154  0028                     __pbssBANK0:	
+   155  0028                     _count_button_press:	
+   156  0028                     	ds	1
+   157  0029                     _timer_out:	
+   158  0029                     	ds	1
+   159  002A                     _modo:	
+   160  002A                     	ds	1
+   161                           
+   162                           	psect	cstackCOMMON
+   163  0000                     __pcstackCOMMON:	
+   164  0000                     ??_config_osc:	
+   165  0000                     ??_config_mcu:	
+   166                           ; 1 bytes @ 0x0
+   167                           
+   168  0000                     ??_config_var:	
    169                           ; 1 bytes @ 0x0
    170                           
-   171  0000                     ??_config_var:	
+   171  0000                     ??_config_Timer1:	
    172                           ; 1 bytes @ 0x0
    173                           
-   174  0000                     ??_config_TM1:	
+   174  0000                     ??_timer_on:	
    175                           ; 1 bytes @ 0x0
    176                           
    177  0000                     ??_main:	
@@ -203,7 +203,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    189  0020                     ?_config_var:	
    190                           ; 1 bytes @ 0x0
    191                           
-   192  0020                     ?_config_TM1:	
+   192  0020                     ?_config_Timer1:	
    193                           ; 1 bytes @ 0x0
    194                           
    195  0020                     ?_read_button:	
@@ -225,883 +225,873 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    211                           ; 2 bytes @ 0x0
    212  0020                     	ds	2
    213  0022                     ??_read_button:	
-   214  0022                     ??_timer_on:	
+   214                           
    215                           ; 1 bytes @ 0x2
-   216                           
-   217                           
-   218                           ; 1 bytes @ 0x2
-   219  0022                     	ds	3
-   220  0025                     timer_on@timer_cont_seg:	
-   221                           
-   222                           ; 2 bytes @ 0x5
-   223  0025                     	ds	2
-   224  0027                     timer_on@timer_cont_min:	
+   216  0022                     	ds	2
+   217  0024                     timer_on@timer_cont_seg:	
+   218                           
+   219                           ; 2 bytes @ 0x4
+   220  0024                     	ds	2
+   221  0026                     timer_on@timer_cont_min:	
+   222                           
+   223                           ; 2 bytes @ 0x6
+   224  0026                     	ds	2
    225                           
-   226                           ; 2 bytes @ 0x7
-   227  0027                     	ds	2
-   228                           
-   229                           	psect	maintext
-   230  00EA                     __pmaintext:	
-   231 ;;
-   232 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   233 ;;
-   234 ;; *************** function _main *****************
-   235 ;; Defined at:
-   236 ;;		line 104 in file "main.c"
-   237 ;; Parameters:    Size  Location     Type
-   238 ;;		None
-   239 ;; Auto vars:     Size  Location     Type
-   240 ;;		None
-   241 ;; Return value:  Size  Location     Type
-   242 ;;                  2   64[None  ] int 
-   243 ;; Registers used:
-   244 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
-   245 ;; Tracked objects:
-   246 ;;		On entry : B00/0
-   247 ;;		On exit  : 0/0
-   248 ;;		Unchanged: 0/0
-   249 ;; Data sizes:     COMMON   BANK0
-   250 ;;      Params:         0       0
-   251 ;;      Locals:         0       0
-   252 ;;      Temps:          0       0
-   253 ;;      Totals:         0       0
-   254 ;;Total ram usage:        0 bytes
-   255 ;; Hardware stack levels required when called:    2
-   256 ;; This function calls:
-   257 ;;		_config_TM1
-   258 ;;		_config_mcu
-   259 ;;		_config_osc
-   260 ;;		_config_var
-   261 ;;		_read_button
-   262 ;;		_timer_on
-   263 ;; This function is called by:
-   264 ;;		Startup code after reset
-   265 ;; This function uses a non-reentrant model
-   266 ;;
-   267                           
-   268                           
-   269                           ;psect for function _main
-   270  00EA                     _main:	
-   271  00EA                     l942:	
-   272                           ;incstack = 0
-   273                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
-   274                           
-   275                           
-   276                           ;main.c: 106:     config_osc();
-   277  00EA  2106               	fcall	_config_osc
-   278  00EB                     l944:	
-   279                           
-   280                           ;main.c: 107:     config_mcu();
-   281  00EB  20D5               	fcall	_config_mcu
-   282  00EC                     l946:	
+   226                           	psect	maintext
+   227  00E2                     __pmaintext:	
+   228 ;;
+   229 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   230 ;;
+   231 ;; *************** function _main *****************
+   232 ;; Defined at:
+   233 ;;		line 99 in file "main.c"
+   234 ;; Parameters:    Size  Location     Type
+   235 ;;		None
+   236 ;; Auto vars:     Size  Location     Type
+   237 ;;		None
+   238 ;; Return value:  Size  Location     Type
+   239 ;;                  2   58[None  ] int 
+   240 ;; Registers used:
+   241 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   242 ;; Tracked objects:
+   243 ;;		On entry : B00/0
+   244 ;;		On exit  : 0/0
+   245 ;;		Unchanged: 0/0
+   246 ;; Data sizes:     COMMON   BANK0
+   247 ;;      Params:         0       0
+   248 ;;      Locals:         0       0
+   249 ;;      Temps:          0       0
+   250 ;;      Totals:         0       0
+   251 ;;Total ram usage:        0 bytes
+   252 ;; Hardware stack levels required when called:    3
+   253 ;; This function calls:
+   254 ;;		_config_Timer1
+   255 ;;		_config_mcu
+   256 ;;		_config_osc
+   257 ;;		_config_var
+   258 ;;		_read_button
+   259 ;;		_timer_on
+   260 ;; This function is called by:
+   261 ;;		Startup code after reset
+   262 ;; This function uses a non-reentrant model
+   263 ;;
+   264                           
+   265                           
+   266                           ;psect for function _main
+   267  00E2                     _main:	
+   268  00E2                     l963:	
+   269                           ;incstack = 0
+   270                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   271                           
+   272                           
+   273                           ;main.c: 101:     config_osc();
+   274  00E2  20FE               	fcall	_config_osc
+   275  00E3                     l965:	
+   276                           
+   277                           ;main.c: 102:     config_mcu();
+   278  00E3  20D0               	fcall	_config_mcu
+   279  00E4                     l967:	
+   280                           
+   281                           ;main.c: 103:     config_var();
+   282  00E4  20F9               	fcall	_config_var
    283                           
-   284                           ;main.c: 108:     config_var();
-   285  00EC  2101               	fcall	_config_var
-   286                           
-   287                           ;main.c: 109:     config_TM1();
-   288  00ED  20F8               	fcall	_config_TM1
-   289  00EE                     l948:	
-   290                           
-   291                           ;main.c: 112:     {;main.c: 114:         read_button();
-   292  00EE  2064               	fcall	_read_button
-   293  00EF                     l950:	
-   294                           
-   295                           ;main.c: 115:         if(modo == modo_timer)
-   296  00EF  1283               	bcf	3,5	;RP0=0, select bank0
-   297  00F0  032B               	decf	_modo,w
-   298  00F1  1D03               	btfss	3,2
-   299  00F2  28F4               	goto	u241
-   300  00F3  28F5               	goto	u240
-   301  00F4                     u241:	
-   302  00F4  28EE               	goto	l948
-   303  00F5                     u240:	
-   304  00F5                     l952:	
-   305                           
-   306                           ;main.c: 116:         {;main.c: 117:             timer_on();
-   307  00F5  2012               	fcall	_timer_on
-   308  00F6  28EE               	goto	l948
-   309  00F7  280B               	ljmp	start
-   310  00F8                     __end_of_main:	
-   311                           
-   312                           	psect	text1
-   313  0012                     __ptext1:	
-   314 ;; *************** function _timer_on *****************
-   315 ;; Defined at:
-   316 ;;		line 189 in file "main.c"
-   317 ;; Parameters:    Size  Location     Type
-   318 ;;		None
-   319 ;; Auto vars:     Size  Location     Type
-   320 ;;  timer_cont_m    2    7[BANK0 ] int 
-   321 ;;  timer_cont_s    2    5[BANK0 ] int 
-   322 ;; Return value:  Size  Location     Type
-   323 ;;                  1    wreg      void 
-   324 ;; Registers used:
-   325 ;;		wreg, status,2, status,0, btemp+1
-   326 ;; Tracked objects:
-   327 ;;		On entry : 0/0
-   328 ;;		On exit  : 0/0
-   329 ;;		Unchanged: 0/0
-   330 ;; Data sizes:     COMMON   BANK0
-   331 ;;      Params:         0       0
-   332 ;;      Locals:         0       4
-   333 ;;      Temps:          0       3
-   334 ;;      Totals:         0       7
-   335 ;;Total ram usage:        7 bytes
-   336 ;; Hardware stack levels used:    1
-   337 ;; Hardware stack levels required when called:    1
-   338 ;; This function calls:
-   339 ;;		Nothing
-   340 ;; This function is called by:
-   341 ;;		_main
-   342 ;; This function uses a non-reentrant model
-   343 ;;
-   344                           
-   345                           
-   346                           ;psect for function _timer_on
-   347  0012                     _timer_on:	
-   348  0012                     l912:	
-   349                           ;incstack = 0
-   350                           ; Regs used in _timer_on: [wreg+status,2+status,0+btemp+1]
-   351                           
-   352                           
-   353                           ;main.c: 190:     int timer_cont_seg;;main.c: 191:     int timer_cont_min;;main.c: 193: 
+   284                           ;main.c: 104:     config_Timer1();
+   285  00E5  20F0               	fcall	_config_Timer1
+   286  00E6                     l969:	
+   287                           
+   288                           ;main.c: 107:     {;main.c: 109:         read_button();
+   289  00E6  206E               	fcall	_read_button
+   290  00E7                     l971:	
+   291                           
+   292                           ;main.c: 110:         if(modo == modo_timer)
+   293  00E7  1283               	bcf	3,5	;RP0=0, select bank0
+   294  00E8  032A               	decf	_modo,w
+   295  00E9  1D03               	btfss	3,2
+   296  00EA  28EC               	goto	u261
+   297  00EB  28ED               	goto	u260
+   298  00EC                     u261:	
+   299  00EC  28E6               	goto	l969
+   300  00ED                     u260:	
+   301  00ED                     l973:	
+   302                           
+   303                           ;main.c: 111:         {;main.c: 112:             timer_on();
+   304  00ED  2012               	fcall	_timer_on
+   305  00EE  28E6               	goto	l969
+   306  00EF  280B               	ljmp	start
+   307  00F0                     __end_of_main:	
+   308                           
+   309                           	psect	text1
+   310  0012                     __ptext1:	
+   311 ;; *************** function _timer_on *****************
+   312 ;; Defined at:
+   313 ;;		line 178 in file "main.c"
+   314 ;; Parameters:    Size  Location     Type
+   315 ;;		None
+   316 ;; Auto vars:     Size  Location     Type
+   317 ;;  timer_cont_m    2    6[BANK0 ] int 
+   318 ;;  timer_cont_s    2    4[BANK0 ] int 
+   319 ;; Return value:  Size  Location     Type
+   320 ;;                  1    wreg      void 
+   321 ;; Registers used:
+   322 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   323 ;; Tracked objects:
+   324 ;;		On entry : 0/0
+   325 ;;		On exit  : 0/0
+   326 ;;		Unchanged: 0/0
+   327 ;; Data sizes:     COMMON   BANK0
+   328 ;;      Params:         0       0
+   329 ;;      Locals:         0       4
+   330 ;;      Temps:          0       0
+   331 ;;      Totals:         0       4
+   332 ;;Total ram usage:        4 bytes
+   333 ;; Hardware stack levels used:    1
+   334 ;; Hardware stack levels required when called:    2
+   335 ;; This function calls:
+   336 ;;		_read_button
+   337 ;; This function is called by:
+   338 ;;		_main
+   339 ;; This function uses a non-reentrant model
+   340 ;;
+   341                           
+   342                           
+   343                           ;psect for function _timer_on
+   344  0012                     _timer_on:	
+   345  0012                     l917:	
+   346                           ;incstack = 0
+   347                           ; Regs used in _timer_on: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   348                           
+   349                           
+   350                           ;main.c: 179:     int timer_cont_seg;;main.c: 180:     int timer_cont_min;;main.c: 182: 
       +                              timer_cont_min = 3;
-   354  0012  3003               	movlw	3
-   355  0013  1283               	bcf	3,5	;RP0=0, select bank0
-   356  0014  00A7               	movwf	timer_on@timer_cont_min
-   357  0015  3000               	movlw	0
-   358  0016  00A8               	movwf	timer_on@timer_cont_min+1
-   359                           
-   360                           ;main.c: 194:     timer_cont_seg = 115;
-   361  0017  3073               	movlw	115
-   362  0018  00A5               	movwf	timer_on@timer_cont_seg
-   363  0019  3000               	movlw	0
-   364  001A  00A6               	movwf	timer_on@timer_cont_seg+1
-   365  001B                     l914:	
+   351  0012  3003               	movlw	3
+   352  0013  1283               	bcf	3,5	;RP0=0, select bank0
+   353  0014  00A6               	movwf	timer_on@timer_cont_min
+   354  0015  3000               	movlw	0
+   355  0016  00A7               	movwf	timer_on@timer_cont_min+1
+   356                           
+   357                           ;main.c: 183:     timer_cont_seg = 115;
+   358  0017  3073               	movlw	115
+   359  0018  00A4               	movwf	timer_on@timer_cont_seg
+   360  0019  3000               	movlw	0
+   361  001A  00A5               	movwf	timer_on@timer_cont_seg+1
+   362  001B                     l919:	
+   363                           
+   364                           ;main.c: 184:     TMR1ON = 1;
+   365  001B  1410               	bsf	16,0	;volatile
    366                           
-   367                           ;main.c: 195:     TMR1ON = 1;
-   368  001B  1410               	bsf	16,0	;volatile
-   369  001C                     l916:	
+   367                           ;main.c: 186:     while(timer_cont_min > 0)
+   368  001C  2857               	goto	l955
+   369  001D                     l921:	
    370                           
-   371                           ;main.c: 196:     GP2 = 1;
-   372  001C  1283               	bcf	3,5	;RP0=0, select bank0
-   373  001D  1505               	bsf	5,2	;volatile
-   374                           
-   375                           ;main.c: 197:     while(timer_cont_min > 0)
-   376  001E  2852               	goto	l938
-   377  001F                     l918:	
-   378                           
-   379                           ;main.c: 198:     {;main.c: 199:         if(timer_out == 1)
-   380  001F  1283               	bcf	3,5	;RP0=0, select bank0
-   381  0020  032A               	decf	_timer_out,w
-   382  0021  1D03               	btfss	3,2
-   383  0022  2824               	goto	u201
-   384  0023  2825               	goto	u200
-   385  0024                     u201:	
-   386  0024  2852               	goto	l938
-   387  0025                     u200:	
-   388  0025                     l920:	
-   389                           
-   390                           ;main.c: 200:         {;main.c: 202:             timer_cont_seg--;
-   391  0025  30FF               	movlw	255
-   392  0026  07A5               	addwf	timer_on@timer_cont_seg,f
-   393  0027  1803               	skipnc
-   394  0028  0AA6               	incf	timer_on@timer_cont_seg+1,f
-   395  0029  30FF               	movlw	255
-   396  002A  07A6               	addwf	timer_on@timer_cont_seg+1,f
-   397  002B                     l922:	
-   398                           
-   399                           ;main.c: 203:             timer_out = 0;
-   400  002B  01AA               	clrf	_timer_out
-   401  002C                     l924:	
-   402                           
-   403                           ;main.c: 204:             TMR1ON=1;
-   404  002C  1410               	bsf	16,0	;volatile
-   405  002D                     l926:	
-   406                           
-   407                           ;main.c: 206:                 if(timer_cont_seg == 0)
-   408  002D  0825               	movf	timer_on@timer_cont_seg,w
-   409  002E  0426               	iorwf	timer_on@timer_cont_seg+1,w
-   410  002F  1D03               	btfss	3,2
-   411  0030  2832               	goto	u211
-   412  0031  2833               	goto	u210
-   413  0032                     u211:	
-   414  0032  2852               	goto	l938
-   415  0033                     u210:	
-   416  0033                     l928:	
+   371                           ;main.c: 187:     {;main.c: 188:         if(timer_out == 1)
+   372  001D  1283               	bcf	3,5	;RP0=0, select bank0
+   373  001E  0329               	decf	_timer_out,w
+   374  001F  1D03               	btfss	3,2
+   375  0020  2822               	goto	u191
+   376  0021  2823               	goto	u190
+   377  0022                     u191:	
+   378  0022  2857               	goto	l955
+   379  0023                     u190:	
+   380  0023                     l923:	
+   381                           
+   382                           ;main.c: 189:         {;main.c: 190:             read_button();
+   383  0023  206E               	fcall	_read_button
+   384  0024                     l925:	
+   385                           
+   386                           ;main.c: 191:             if(modo==modo_timer)
+   387  0024  1283               	bcf	3,5	;RP0=0, select bank0
+   388  0025  032A               	decf	_modo,w
+   389  0026  1D03               	btfss	3,2
+   390  0027  2829               	goto	u201
+   391  0028  282A               	goto	u200
+   392  0029                     u201:	
+   393  0029  2843               	goto	l939
+   394  002A                     u200:	
+   395  002A                     l927:	
+   396                           
+   397                           ;main.c: 192:             {;main.c: 193:                 GP2=1;
+   398  002A  1505               	bsf	5,2	;volatile
+   399  002B                     l929:	
+   400                           
+   401                           ;main.c: 194:                 timer_cont_seg--;
+   402  002B  30FF               	movlw	255
+   403  002C  07A4               	addwf	timer_on@timer_cont_seg,f
+   404  002D  1803               	skipnc
+   405  002E  0AA5               	incf	timer_on@timer_cont_seg+1,f
+   406  002F  30FF               	movlw	255
+   407  0030  07A5               	addwf	timer_on@timer_cont_seg+1,f
+   408  0031                     l931:	
+   409                           
+   410                           ;main.c: 195:                 timer_out = 0;
+   411  0031  01A9               	clrf	_timer_out
+   412  0032                     l933:	
+   413                           
+   414                           ;main.c: 196:                 TMR1ON=1;
+   415  0032  1410               	bsf	16,0	;volatile
+   416  0033                     l935:	
    417                           
-   418                           ;main.c: 207:                 {;main.c: 208:                         timer_cont_seg = 11
+   418                           ;main.c: 198:                 if(timer_cont_seg == 0)
+   419  0033  0824               	movf	timer_on@timer_cont_seg,w
+   420  0034  0425               	iorwf	timer_on@timer_cont_seg+1,w
+   421  0035  1D03               	btfss	3,2
+   422  0036  2838               	goto	u211
+   423  0037  2839               	goto	u210
+   424  0038                     u211:	
+   425  0038  2843               	goto	l939
+   426  0039                     u210:	
+   427  0039                     l937:	
+   428                           
+   429                           ;main.c: 199:                 {;main.c: 200:                         timer_cont_seg = 11
       +                          5;
-   419  0033  3073               	movlw	115
-   420  0034  00A5               	movwf	timer_on@timer_cont_seg
-   421  0035  3000               	movlw	0
-   422  0036  00A6               	movwf	timer_on@timer_cont_seg+1
-   423                           
-   424                           ;main.c: 210:                         timer_cont_min--;
-   425  0037  30FF               	movlw	255
-   426  0038  07A7               	addwf	timer_on@timer_cont_min,f
-   427  0039  1803               	skipnc
-   428  003A  0AA8               	incf	timer_on@timer_cont_min+1,f
-   429  003B  30FF               	movlw	255
-   430  003C  07A8               	addwf	timer_on@timer_cont_min+1,f
-   431  003D                     l930:	
-   432                           
-   433                           ;main.c: 211:                         if(timer_cont_min == 1)
-   434  003D  0327               	decf	timer_on@timer_cont_min,w
-   435  003E  0428               	iorwf	timer_on@timer_cont_min+1,w
-   436  003F  1D03               	btfss	3,2
-   437  0040  2842               	goto	u221
-   438  0041  2843               	goto	u220
-   439  0042                     u221:	
-   440  0042  2852               	goto	l86
-   441  0043                     u220:	
-   442  0043                     l932:	
+   430  0039  3073               	movlw	115
+   431  003A  00A4               	movwf	timer_on@timer_cont_seg
+   432  003B  3000               	movlw	0
+   433  003C  00A5               	movwf	timer_on@timer_cont_seg+1
+   434                           
+   435                           ;main.c: 202:                         timer_cont_min--;
+   436  003D  30FF               	movlw	255
+   437  003E  07A6               	addwf	timer_on@timer_cont_min,f
+   438  003F  1803               	skipnc
+   439  0040  0AA7               	incf	timer_on@timer_cont_min+1,f
+   440  0041  30FF               	movlw	255
+   441  0042  07A7               	addwf	timer_on@timer_cont_min+1,f
+   442  0043                     l939:	
    443                           
-   444                           ;main.c: 212:                         {;main.c: 213:                             GP2 = 0
-      +                          ;
-   445  0043  1105               	bcf	5,2	;volatile
-   446  0044                     l934:	
-   447                           
-   448                           ;main.c: 214:                             _delay((unsigned long)((500)*(4000000/4000.0))
-      +                          );
-   449  0044  3003               	movlw	3
-   450  0045  00A4               	movwf	??_timer_on+2
-   451  0046  308A               	movlw	138
-   452  0047  00A3               	movwf	??_timer_on+1
-   453  0048  3055               	movlw	85
-   454  0049  00A2               	movwf	??_timer_on
-   455  004A                     u317:	
-   456  004A  0BA2               	decfsz	??_timer_on,f
-   457  004B  284A               	goto	u317
-   458  004C  0BA3               	decfsz	??_timer_on+1,f
-   459  004D  284A               	goto	u317
-   460  004E  0BA4               	decfsz	??_timer_on+2,f
-   461  004F  284A               	goto	u317
-   462  0050  2851               	nop2
-   463  0051  281C               	goto	l916
-   464  0052                     l86:	
-   465                           ;main.c: 219:         }
+   444                           ;main.c: 212:             if(modo==modo_sempre_ligado)
+   445  0043  3002               	movlw	2
+   446  0044  062A               	xorwf	_modo,w
+   447  0045  1D03               	btfss	3,2
+   448  0046  2848               	goto	u221
+   449  0047  2849               	goto	u220
+   450  0048                     u221:	
+   451  0048  284C               	goto	l947
+   452  0049                     u220:	
+   453  0049                     l941:	
+   454                           
+   455                           ;main.c: 213:             {;main.c: 215:                 timer_out = 0;
+   456  0049  01A9               	clrf	_timer_out
+   457  004A                     l943:	
+   458                           
+   459                           ;main.c: 216:                 TMR1ON = 1;
+   460  004A  1410               	bsf	16,0	;volatile
+   461  004B                     l945:	
+   462                           
+   463                           ;main.c: 219:                 GP2=1;
+   464  004B  1505               	bsf	5,2	;volatile
+   465  004C                     l947:	
    466                           
-   467  0052                     l938:	
-   468                           
-   469                           ;main.c: 197:     while(timer_cont_min > 0)
-   470  0052  0828               	movf	timer_on@timer_cont_min+1,w
-   471  0053  3A80               	xorlw	128
-   472  0054  00DF               	movwf	btemp+1
-   473  0055  3080               	movlw	128
-   474  0056  025F               	subwf	btemp+1,w
-   475  0057  1D03               	skipz
-   476  0058  285B               	goto	u235
-   477  0059  3001               	movlw	1
-   478  005A  0227               	subwf	timer_on@timer_cont_min,w
-   479  005B                     u235:	
-   480  005B  1803               	skipnc
-   481  005C  285E               	goto	u231
-   482  005D  285F               	goto	u230
-   483  005E                     u231:	
-   484  005E  281F               	goto	l918
-   485  005F                     u230:	
-   486  005F                     l89:	
-   487                           
-   488                           ;main.c: 224:     TMR1ON = 0;
-   489  005F  1283               	bcf	3,5	;RP0=0, select bank0
-   490  0060  1010               	bcf	16,0	;volatile
-   491                           
-   492                           ;main.c: 225:     GP2 = 0;
-   493  0061  1105               	bcf	5,2	;volatile
-   494  0062                     l940:	
-   495                           
-   496                           ;main.c: 226:     modo = modo_desligado;
-   497  0062  01AB               	clrf	_modo
-   498  0063                     l90:	
-   499  0063  0008               	return
-   500  0064                     __end_of_timer_on:	
-   501                           
-   502                           	psect	text2
-   503  0064                     __ptext2:	
-   504 ;; *************** function _read_button *****************
-   505 ;; Defined at:
-   506 ;;		line 230 in file "main.c"
-   507 ;; Parameters:    Size  Location     Type
-   508 ;;		None
-   509 ;; Auto vars:     Size  Location     Type
-   510 ;;		None
-   511 ;; Return value:  Size  Location     Type
-   512 ;;                  1    wreg      void 
-   513 ;; Registers used:
-   514 ;;		wreg, fsr0l, fsr0h, status,2, status,0
-   515 ;; Tracked objects:
-   516 ;;		On entry : 0/0
-   517 ;;		On exit  : 0/0
-   518 ;;		Unchanged: 0/0
-   519 ;; Data sizes:     COMMON   BANK0
-   520 ;;      Params:         0       0
-   521 ;;      Locals:         0       0
-   522 ;;      Temps:          0       2
-   523 ;;      Totals:         0       2
-   524 ;;Total ram usage:        2 bytes
-   525 ;; Hardware stack levels used:    1
-   526 ;; Hardware stack levels required when called:    1
-   527 ;; This function calls:
-   528 ;;		Nothing
-   529 ;; This function is called by:
-   530 ;;		_main
-   531 ;; This function uses a non-reentrant model
-   532 ;;
-   533                           
-   534                           
-   535                           ;psect for function _read_button
-   536  0064                     _read_button:	
-   537  0064                     l882:	
-   538                           ;incstack = 0
-   539                           ; Regs used in _read_button: [wreg-fsr0h+status,2+status,0]
-   540                           
-   541                           
-   542                           ;main.c: 232:     if(GP0 != 1)
-   543  0064  1283               	bcf	3,5	;RP0=0, select bank0
-   544  0065  1805               	btfsc	5,0	;volatile
-   545  0066  2868               	goto	u161
-   546  0067  2869               	goto	u160
-   547  0068                     u161:	
-   548  0068  28AB               	goto	l102
-   549  0069                     u160:	
-   550  0069                     l884:	
-   551                           
-   552                           ;main.c: 233:     {;main.c: 234:         _delay((unsigned long)((10)*(4000000/4000.0)));
-   553  0069  300D               	movlw	13
-   554  006A  00A3               	movwf	??_read_button+1
-   555  006B  30FB               	movlw	251
-   556  006C  00A2               	movwf	??_read_button
-   557  006D                     u327:	
-   558  006D  0BA2               	decfsz	??_read_button,f
-   559  006E  286D               	goto	u327
-   560  006F  0BA3               	decfsz	??_read_button+1,f
-   561  0070  286D               	goto	u327
-   562  0071  2872               	nop2
-   563  0072                     l886:	
-   564                           
-   565                           ;main.c: 235:         if(GP0 != 1)
-   566  0072  1283               	bcf	3,5	;RP0=0, select bank0
-   567  0073  1805               	btfsc	5,0	;volatile
-   568  0074  2876               	goto	u171
-   569  0075  2877               	goto	u170
-   570  0076                     u171:	
-   571  0076  28AB               	goto	l102
-   572  0077                     u170:	
-   573  0077  2898               	goto	l906
-   574  0078                     l96:	
-   575                           ;main.c: 239:                 case modo_desligado:{
-   576                           
-   577                           
-   578                           ;main.c: 240:                                         modo = modo_timer;
-   579  0078  01AB               	clrf	_modo
-   580  0079  0AAB               	incf	_modo,f
-   581                           
-   582                           ;main.c: 241:                                         break;
-   583  007A  28AB               	goto	l102
-   584  007B                     l890:	
-   585                           
-   586                           ;main.c: 244:                                        count_button_press++;
-   587  007B  3001               	movlw	1
-   588  007C  00A2               	movwf	??_read_button
-   589  007D  0822               	movf	??_read_button,w
-   590  007E  07A9               	addwf	_count_button_press,f
-   591  007F                     l892:	
-   592                           
-   593                           ;main.c: 245:                                        if(count_button_press > 5)
-   594  007F  3006               	movlw	6
-   595  0080  0229               	subwf	_count_button_press,w
-   596  0081  1C03               	skipc
-   597  0082  2884               	goto	u181
-   598  0083  2885               	goto	u180
-   599  0084                     u181:	
-   600  0084  28AB               	goto	l94
-   601  0085                     u180:	
-   602  0085                     l894:	
+   467                           ;main.c: 222:             if (modo==modo_apagado)
+   468  004C  3003               	movlw	3
+   469  004D  062A               	xorwf	_modo,w
+   470  004E  1D03               	btfss	3,2
+   471  004F  2851               	goto	u231
+   472  0050  2852               	goto	u230
+   473  0051                     u231:	
+   474  0051  2857               	goto	l955
+   475  0052                     u230:	
+   476  0052                     l949:	
+   477                           
+   478                           ;main.c: 223:             {;main.c: 224:                 timer_out = 0;
+   479  0052  01A9               	clrf	_timer_out
+   480  0053                     l951:	
+   481                           
+   482                           ;main.c: 225:                 TMR1ON = 0;
+   483  0053  1010               	bcf	16,0	;volatile
+   484  0054                     l953:	
+   485                           
+   486                           ;main.c: 226:                 GP2=0;
+   487  0054  1105               	bcf	5,2	;volatile
+   488                           
+   489                           ;main.c: 227:                 timer_cont_min=0;
+   490  0055  01A6               	clrf	timer_on@timer_cont_min
+   491  0056  01A7               	clrf	timer_on@timer_cont_min+1
+   492  0057                     l955:	
+   493                           
+   494                           ;main.c: 186:     while(timer_cont_min > 0)
+   495  0057  0827               	movf	timer_on@timer_cont_min+1,w
+   496  0058  3A80               	xorlw	128
+   497  0059  00DF               	movwf	btemp+1
+   498  005A  3080               	movlw	128
+   499  005B  025F               	subwf	btemp+1,w
+   500  005C  1D03               	skipz
+   501  005D  2860               	goto	u245
+   502  005E  3001               	movlw	1
+   503  005F  0226               	subwf	timer_on@timer_cont_min,w
+   504  0060                     u245:	
+   505  0060  1803               	skipnc
+   506  0061  2863               	goto	u241
+   507  0062  2864               	goto	u240
+   508  0063                     u241:	
+   509  0063  281D               	goto	l921
+   510  0064                     u240:	
+   511  0064                     l957:	
+   512                           
+   513                           ;main.c: 232:     modo=modo_desligado;
+   514  0064  1283               	bcf	3,5	;RP0=0, select bank0
+   515  0065  01AA               	clrf	_modo
+   516  0066                     l959:	
+   517                           
+   518                           ;main.c: 233:     TMR1ON = 0;
+   519  0066  1010               	bcf	16,0	;volatile
+   520  0067                     l961:	
+   521                           
+   522                           ;main.c: 234:     GP2=0;
+   523  0067  1105               	bcf	5,2	;volatile
+   524                           
+   525                           ;main.c: 235:     timer_out = 0;
+   526  0068  01A9               	clrf	_timer_out
+   527  0069                     l86:	
+   528                           ;main.c: 236:     while(GP0==0);
+   529                           
+   530  0069  1C05               	btfss	5,0	;volatile
+   531  006A  286C               	goto	u251
+   532  006B  286D               	goto	u250
+   533  006C                     u251:	
+   534  006C  2869               	goto	l86
+   535  006D                     u250:	
+   536  006D                     l89:	
+   537  006D  0008               	return
+   538  006E                     __end_of_timer_on:	
+   539                           
+   540                           	psect	text2
+   541  006E                     __ptext2:	
+   542 ;; *************** function _read_button *****************
+   543 ;; Defined at:
+   544 ;;		line 241 in file "main.c"
+   545 ;; Parameters:    Size  Location     Type
+   546 ;;		None
+   547 ;; Auto vars:     Size  Location     Type
+   548 ;;		None
+   549 ;; Return value:  Size  Location     Type
+   550 ;;                  1    wreg      void 
+   551 ;; Registers used:
+   552 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+   553 ;; Tracked objects:
+   554 ;;		On entry : 0/0
+   555 ;;		On exit  : 0/0
+   556 ;;		Unchanged: 0/0
+   557 ;; Data sizes:     COMMON   BANK0
+   558 ;;      Params:         0       0
+   559 ;;      Locals:         0       0
+   560 ;;      Temps:          0       2
+   561 ;;      Totals:         0       2
+   562 ;;Total ram usage:        2 bytes
+   563 ;; Hardware stack levels used:    1
+   564 ;; Hardware stack levels required when called:    1
+   565 ;; This function calls:
+   566 ;;		Nothing
+   567 ;; This function is called by:
+   568 ;;		_main
+   569 ;;		_timer_on
+   570 ;; This function uses a non-reentrant model
+   571 ;;
+   572                           
+   573                           
+   574                           ;psect for function _read_button
+   575  006E                     _read_button:	
+   576  006E                     l851:	
+   577                           ;incstack = 0
+   578                           ; Regs used in _read_button: [wreg-fsr0h+status,2+status,0]
+   579                           
+   580                           
+   581                           ;main.c: 243:     if(GP0 != 1)
+   582  006E  1283               	bcf	3,5	;RP0=0, select bank0
+   583  006F  1805               	btfsc	5,0	;volatile
+   584  0070  2872               	goto	u151
+   585  0071  2873               	goto	u150
+   586  0072                     u151:	
+   587  0072  28B7               	goto	l101
+   588  0073                     u150:	
+   589  0073                     l853:	
+   590                           
+   591                           ;main.c: 244:     {;main.c: 245:         _delay((unsigned long)((50)*(4000000/4000.0)));
+   592  0073  3041               	movlw	65
+   593  0074  00A3               	movwf	??_read_button+1
+   594  0075  30EE               	movlw	238
+   595  0076  00A2               	movwf	??_read_button
+   596  0077                     u297:	
+   597  0077  0BA2               	decfsz	??_read_button,f
+   598  0078  2877               	goto	u297
+   599  0079  0BA3               	decfsz	??_read_button+1,f
+   600  007A  2877               	goto	u297
+   601  007B  0000               	nop
+   602  007C                     l855:	
    603                           
-   604                           ;main.c: 246:                                        {;main.c: 247:                     
-      +                                                 modo = modo_sempre_ligado;
-   605  0085  3002               	movlw	2
-   606  0086  00A2               	movwf	??_read_button
-   607  0087  0822               	movf	??_read_button,w
-   608  0088  00AB               	movwf	_modo
-   609  0089                     l896:	
-   610                           
-   611                           ;main.c: 248:                                            count_button_press = 0;
-   612  0089  01A9               	clrf	_count_button_press
-   613  008A  28AB               	goto	l102
-   614  008B                     l898:	
+   604                           ;main.c: 246:         if(GP0 != 1)
+   605  007C  1283               	bcf	3,5	;RP0=0, select bank0
+   606  007D  1805               	btfsc	5,0	;volatile
+   607  007E  2880               	goto	u161
+   608  007F  2881               	goto	u160
+   609  0080                     u161:	
+   610  0080  28B7               	goto	l101
+   611  0081                     u160:	
+   612  0081  28A4               	goto	l879
+   613  0082                     l95:	
+   614                           ;main.c: 250:                 case modo_desligado:{
    615                           
-   616                           ;main.c: 254:                                             count_button_press++;
-   617  008B  3001               	movlw	1
-   618  008C  00A2               	movwf	??_read_button
-   619  008D  0822               	movf	??_read_button,w
-   620  008E  07A9               	addwf	_count_button_press,f
-   621  008F                     l900:	
-   622                           
-   623                           ;main.c: 255:                                             if(count_button_press > 50)
-   624  008F  3033               	movlw	51
-   625  0090  0229               	subwf	_count_button_press,w
-   626  0091  1C03               	skipc
-   627  0092  2894               	goto	u191
-   628  0093  2895               	goto	u190
-   629  0094                     u191:	
-   630  0094  28AB               	goto	l94
-   631  0095                     u190:	
-   632  0095                     l902:	
-   633                           
-   634                           ;main.c: 256:                                             {;main.c: 257:                
-      +                                                           modo = modo_desligado;
-   635  0095  01AB               	clrf	_modo
-   636                           
-   637                           ;main.c: 258:                                                 count_button_press = 0;
-   638  0096  01A9               	clrf	_count_button_press
-   639  0097  28AB               	goto	l102
-   640  0098                     l906:	
-   641  0098  082B               	movf	_modo,w
-   642  0099  00A2               	movwf	??_read_button
-   643  009A  01A3               	clrf	??_read_button+1
-   644                           
-   645                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+   616                           
+   617                           ;main.c: 251:                                         modo = modo_timer;
+   618  0082  01AA               	clrf	_modo
+   619  0083  0AAA               	incf	_modo,f
+   620  0084                     l859:	
+   621                           
+   622                           ;main.c: 252:                                         count_button_press=0;
+   623  0084  01A8               	clrf	_count_button_press
+   624                           
+   625                           ;main.c: 253:                                         break;
+   626  0085  28B7               	goto	l101
+   627  0086                     l861:	
+   628                           
+   629                           ;main.c: 256:                                        count_button_press++;
+   630  0086  3001               	movlw	1
+   631  0087  00A2               	movwf	??_read_button
+   632  0088  0822               	movf	??_read_button,w
+   633  0089  07A8               	addwf	_count_button_press,f
+   634  008A                     l863:	
+   635                           
+   636                           ;main.c: 257:                                        if(count_button_press > 5)
+   637  008A  3006               	movlw	6
+   638  008B  0228               	subwf	_count_button_press,w
+   639  008C  1C03               	skipc
+   640  008D  288F               	goto	u171
+   641  008E  2890               	goto	u170
+   642  008F                     u171:	
+   643  008F  28B7               	goto	l93
+   644  0090                     u170:	
+   645  0090                     l865:	
+   646                           
+   647                           ;main.c: 258:                                        {;main.c: 259:                     
+      +                                                 modo = modo_sempre_ligado;
+   648  0090  3002               	movlw	2
+   649  0091  00A2               	movwf	??_read_button
+   650  0092  0822               	movf	??_read_button,w
+   651  0093  00AA               	movwf	_modo
+   652  0094  2884               	goto	l859
+   653  0095                     l869:	
+   654                           
+   655                           ;main.c: 266:                                             count_button_press++;
+   656  0095  3001               	movlw	1
+   657  0096  00A2               	movwf	??_read_button
+   658  0097  0822               	movf	??_read_button,w
+   659  0098  07A8               	addwf	_count_button_press,f
+   660  0099                     l871:	
+   661                           
+   662                           ;main.c: 267:                                             if(count_button_press > 5)
+   663  0099  3006               	movlw	6
+   664  009A  0228               	subwf	_count_button_press,w
+   665  009B  1C03               	skipc
+   666  009C  289E               	goto	u181
+   667  009D  289F               	goto	u180
+   668  009E                     u181:	
+   669  009E  28B7               	goto	l93
+   670  009F                     u180:	
+   671  009F                     l873:	
+   672                           
+   673                           ;main.c: 268:                                             {;main.c: 269:                
+      +                                                           modo = modo_apagado;
+   674  009F  3003               	movlw	3
+   675  00A0  00A2               	movwf	??_read_button
+   676  00A1  0822               	movf	??_read_button,w
+   677  00A2  00AA               	movwf	_modo
+   678  00A3  2884               	goto	l859
+   679  00A4                     l879:	
+   680  00A4  082A               	movf	_modo,w
+   681  00A5  00A2               	movwf	??_read_button
+   682  00A6  01A3               	clrf	??_read_button+1
+   683                           
+   684                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
       +                          itches
-   646                           ; Switch size 1, requested type "simple"
-   647                           ; Number of cases is 1, Range of values is 0 to 0
-   648                           ; switch strategies available:
-   649                           ; Name         Instructions Cycles
-   650                           ; simple_byte            4     3 (average)
-   651                           ; direct_byte            7     6 (fixed)
-   652                           ; jumptable            260     6 (fixed)
-   653                           ;	Chosen strategy is simple_byte
-   654  009B  0823               	movf	??_read_button+1,w
-   655  009C  3A00               	xorlw	0	; case 0
-   656  009D  1903               	skipnz
-   657  009E  28A0               	goto	l988
-   658  009F  28AB               	goto	l102
-   659  00A0                     l988:	
-   660                           
-   661                           ; Switch size 1, requested type "simple"
-   662                           ; Number of cases is 3, Range of values is 0 to 2
-   663                           ; switch strategies available:
-   664                           ; Name         Instructions Cycles
-   665                           ; direct_byte            9     6 (fixed)
-   666                           ; simple_byte           10     6 (average)
-   667                           ; jumptable            260     6 (fixed)
-   668                           ;	Chosen strategy is simple_byte
-   669  00A0  0822               	movf	??_read_button,w
-   670  00A1  3A00               	xorlw	0	; case 0
-   671  00A2  1903               	skipnz
-   672  00A3  2878               	goto	l96
-   673  00A4  3A01               	xorlw	1	; case 1
-   674  00A5  1903               	skipnz
-   675  00A6  287B               	goto	l890
-   676  00A7  3A03               	xorlw	3	; case 2
-   677  00A8  1903               	skipnz
-   678  00A9  288B               	goto	l898
-   679  00AA  28AB               	goto	l102
-   680  00AB                     l94:	
-   681                           ;main.c: 264:         }
-   682                           
-   683  00AB                     l102:	
-   684  00AB  0008               	return
-   685  00AC                     __end_of_read_button:	
-   686                           
-   687                           	psect	text3
-   688  0101                     __ptext3:	
-   689 ;; *************** function _config_var *****************
-   690 ;; Defined at:
-   691 ;;		line 163 in file "main.c"
-   692 ;; Parameters:    Size  Location     Type
-   693 ;;		None
-   694 ;; Auto vars:     Size  Location     Type
-   695 ;;		None
-   696 ;; Return value:  Size  Location     Type
-   697 ;;                  1    wreg      void 
-   698 ;; Registers used:
-   699 ;;		status,2
-   700 ;; Tracked objects:
-   701 ;;		On entry : 0/0
-   702 ;;		On exit  : 0/0
-   703 ;;		Unchanged: 0/0
-   704 ;; Data sizes:     COMMON   BANK0
-   705 ;;      Params:         0       0
-   706 ;;      Locals:         0       0
-   707 ;;      Temps:          0       0
-   708 ;;      Totals:         0       0
-   709 ;;Total ram usage:        0 bytes
-   710 ;; Hardware stack levels used:    1
-   711 ;; Hardware stack levels required when called:    1
-   712 ;; This function calls:
-   713 ;;		Nothing
-   714 ;; This function is called by:
-   715 ;;		_main
-   716 ;; This function uses a non-reentrant model
-   717 ;;
-   718                           
-   719                           
-   720                           ;psect for function _config_var
-   721  0101                     _config_var:	
-   722  0101                     l872:	
-   723                           ;incstack = 0
-   724                           ; Regs used in _config_var: [status,2]
+   685                           ; Switch size 1, requested type "simple"
+   686                           ; Number of cases is 1, Range of values is 0 to 0
+   687                           ; switch strategies available:
+   688                           ; Name         Instructions Cycles
+   689                           ; simple_byte            4     3 (average)
+   690                           ; direct_byte            7     6 (fixed)
+   691                           ; jumptable            260     6 (fixed)
+   692                           ;	Chosen strategy is simple_byte
+   693  00A7  0823               	movf	??_read_button+1,w
+   694  00A8  3A00               	xorlw	0	; case 0
+   695  00A9  1903               	skipnz
+   696  00AA  28AC               	goto	l1003
+   697  00AB  28B7               	goto	l101
+   698  00AC                     l1003:	
+   699                           
+   700                           ; Switch size 1, requested type "simple"
+   701                           ; Number of cases is 3, Range of values is 0 to 2
+   702                           ; switch strategies available:
+   703                           ; Name         Instructions Cycles
+   704                           ; direct_byte            9     6 (fixed)
+   705                           ; simple_byte           10     6 (average)
+   706                           ; jumptable            260     6 (fixed)
+   707                           ;	Chosen strategy is simple_byte
+   708  00AC  0822               	movf	??_read_button,w
+   709  00AD  3A00               	xorlw	0	; case 0
+   710  00AE  1903               	skipnz
+   711  00AF  2882               	goto	l95
+   712  00B0  3A01               	xorlw	1	; case 1
+   713  00B1  1903               	skipnz
+   714  00B2  2886               	goto	l861
+   715  00B3  3A03               	xorlw	3	; case 2
+   716  00B4  1903               	skipnz
+   717  00B5  2895               	goto	l869
+   718  00B6  28B7               	goto	l101
+   719  00B7                     l93:	
+   720                           ;main.c: 281:         }
+   721                           
+   722  00B7                     l101:	
+   723  00B7  0008               	return
+   724  00B8                     __end_of_read_button:	
    725                           
-   726                           
-   727                           ;main.c: 164:    count_button_press = 0;
-   728  0101  1283               	bcf	3,5	;RP0=0, select bank0
-   729  0102  01A9               	clrf	_count_button_press
-   730                           
-   731                           ;main.c: 165:    modo = modo_desligado;
-   732  0103  01AB               	clrf	_modo
-   733                           
-   734                           ;main.c: 172:     timer_out = 0;
-   735  0104  01AA               	clrf	_timer_out
-   736  0105                     l78:	
-   737  0105  0008               	return
-   738  0106                     __end_of_config_var:	
-   739                           
-   740                           	psect	text4
-   741  0106                     __ptext4:	
-   742 ;; *************** function _config_osc *****************
-   743 ;; Defined at:
-   744 ;;		line 130 in file "main.c"
-   745 ;; Parameters:    Size  Location     Type
-   746 ;;		None
-   747 ;; Auto vars:     Size  Location     Type
-   748 ;;		None
-   749 ;; Return value:  Size  Location     Type
-   750 ;;                  1    wreg      void 
-   751 ;; Registers used:
-   752 ;;		None
-   753 ;; Tracked objects:
-   754 ;;		On entry : 0/0
-   755 ;;		On exit  : 0/0
-   756 ;;		Unchanged: 0/0
-   757 ;; Data sizes:     COMMON   BANK0
-   758 ;;      Params:         0       0
-   759 ;;      Locals:         0       0
-   760 ;;      Temps:          0       0
-   761 ;;      Totals:         0       0
-   762 ;;Total ram usage:        0 bytes
-   763 ;; Hardware stack levels used:    1
-   764 ;; Hardware stack levels required when called:    1
-   765 ;; This function calls:
-   766 ;;		Nothing
-   767 ;; This function is called by:
-   768 ;;		_main
-   769 ;; This function uses a non-reentrant model
-   770 ;;
-   771                           
+   726                           	psect	text3
+   727  00F9                     __ptext3:	
+   728 ;; *************** function _config_var *****************
+   729 ;; Defined at:
+   730 ;;		line 158 in file "main.c"
+   731 ;; Parameters:    Size  Location     Type
+   732 ;;		None
+   733 ;; Auto vars:     Size  Location     Type
+   734 ;;		None
+   735 ;; Return value:  Size  Location     Type
+   736 ;;                  1    wreg      void 
+   737 ;; Registers used:
+   738 ;;		status,2
+   739 ;; Tracked objects:
+   740 ;;		On entry : 0/0
+   741 ;;		On exit  : 0/0
+   742 ;;		Unchanged: 0/0
+   743 ;; Data sizes:     COMMON   BANK0
+   744 ;;      Params:         0       0
+   745 ;;      Locals:         0       0
+   746 ;;      Temps:          0       0
+   747 ;;      Totals:         0       0
+   748 ;;Total ram usage:        0 bytes
+   749 ;; Hardware stack levels used:    1
+   750 ;; Hardware stack levels required when called:    1
+   751 ;; This function calls:
+   752 ;;		Nothing
+   753 ;; This function is called by:
+   754 ;;		_main
+   755 ;; This function uses a non-reentrant model
+   756 ;;
+   757                           
+   758                           
+   759                           ;psect for function _config_var
+   760  00F9                     _config_var:	
+   761  00F9                     l907:	
+   762                           ;incstack = 0
+   763                           ; Regs used in _config_var: [status,2]
+   764                           
+   765                           
+   766                           ;main.c: 159:    count_button_press = 0;
+   767  00F9  1283               	bcf	3,5	;RP0=0, select bank0
+   768  00FA  01A8               	clrf	_count_button_press
+   769                           
+   770                           ;main.c: 160:    modo = modo_desligado;
+   771  00FB  01AA               	clrf	_modo
    772                           
-   773                           ;psect for function _config_osc
-   774  0106                     _config_osc:	
-   775  0106                     l846:	
-   776                           ;incstack = 0
-   777                           ; Regs used in _config_osc: []
+   773                           ;main.c: 161:    timer_out = 0;
+   774  00FC  01A9               	clrf	_timer_out
+   775  00FD                     l72:	
+   776  00FD  0008               	return
+   777  00FE                     __end_of_config_var:	
    778                           
-   779  0106  1683               	bsf	3,5	;# 
-   780  0107  23FF               	call	1023	;# 
-   781  0108  0090               	movwf	144	;# 
-   782  0109  1283               	bcf	3,5	;# 
-   783  010A                     l72:	
-   784  010A  0008               	return
-   785  010B                     __end_of_config_osc:	
-   786                           
-   787                           	psect	text5
-   788  00D5                     __ptext5:	
-   789 ;; *************** function _config_mcu *****************
-   790 ;; Defined at:
-   791 ;;		line 142 in file "main.c"
-   792 ;; Parameters:    Size  Location     Type
-   793 ;;		None
-   794 ;; Auto vars:     Size  Location     Type
-   795 ;;		None
-   796 ;; Return value:  Size  Location     Type
-   797 ;;                  1    wreg      void 
-   798 ;; Registers used:
-   799 ;;		wreg, status,2
-   800 ;; Tracked objects:
-   801 ;;		On entry : 0/0
-   802 ;;		On exit  : 0/0
-   803 ;;		Unchanged: 0/0
-   804 ;; Data sizes:     COMMON   BANK0
-   805 ;;      Params:         0       0
-   806 ;;      Locals:         0       0
-   807 ;;      Temps:          0       0
-   808 ;;      Totals:         0       0
-   809 ;;Total ram usage:        0 bytes
-   810 ;; Hardware stack levels used:    1
-   811 ;; Hardware stack levels required when called:    1
-   812 ;; This function calls:
-   813 ;;		Nothing
-   814 ;; This function is called by:
-   815 ;;		_main
-   816 ;; This function uses a non-reentrant model
-   817 ;;
-   818                           
-   819                           
-   820                           ;psect for function _config_mcu
-   821  00D5                     _config_mcu:	
-   822  00D5                     l848:	
-   823                           ;incstack = 0
-   824                           ; Regs used in _config_mcu: [wreg+status,2]
+   779                           	psect	text4
+   780  00FE                     __ptext4:	
+   781 ;; *************** function _config_osc *****************
+   782 ;; Defined at:
+   783 ;;		line 125 in file "main.c"
+   784 ;; Parameters:    Size  Location     Type
+   785 ;;		None
+   786 ;; Auto vars:     Size  Location     Type
+   787 ;;		None
+   788 ;; Return value:  Size  Location     Type
+   789 ;;                  1    wreg      void 
+   790 ;; Registers used:
+   791 ;;		None
+   792 ;; Tracked objects:
+   793 ;;		On entry : 0/0
+   794 ;;		On exit  : 0/0
+   795 ;;		Unchanged: 0/0
+   796 ;; Data sizes:     COMMON   BANK0
+   797 ;;      Params:         0       0
+   798 ;;      Locals:         0       0
+   799 ;;      Temps:          0       0
+   800 ;;      Totals:         0       0
+   801 ;;Total ram usage:        0 bytes
+   802 ;; Hardware stack levels used:    1
+   803 ;; Hardware stack levels required when called:    1
+   804 ;; This function calls:
+   805 ;;		Nothing
+   806 ;; This function is called by:
+   807 ;;		_main
+   808 ;; This function uses a non-reentrant model
+   809 ;;
+   810                           
+   811                           
+   812                           ;psect for function _config_osc
+   813  00FE                     _config_osc:	
+   814  00FE                     l885:	
+   815                           ;incstack = 0
+   816                           ; Regs used in _config_osc: []
+   817                           
+   818  00FE  1683               	bsf	3,5	;# 
+   819  00FF  23FF               	call	1023	;# 
+   820  0100  0090               	movwf	144	;# 
+   821  0101  1283               	bcf	3,5	;# 
+   822  0102                     l66:	
+   823  0102  0008               	return
+   824  0103                     __end_of_config_osc:	
    825                           
-   826                           
-   827                           ;main.c: 143:     ANSEL = 0b00000000;
-   828  00D5  1683               	bsf	3,5	;RP0=1, select bank1
-   829  00D6  019F               	clrf	31	;volatile
-   830  00D7                     l850:	
-   831                           
-   832                           ;main.c: 144:     CMCON = 0b00000111;
-   833  00D7  3007               	movlw	7
-   834  00D8  1283               	bcf	3,5	;RP0=0, select bank0
-   835  00D9  0099               	movwf	25	;volatile
-   836  00DA                     l852:	
-   837                           
-   838                           ;main.c: 145:     TRISIO = 0b11001001;
-   839  00DA  30C9               	movlw	201
-   840  00DB  1683               	bsf	3,5	;RP0=1, select bank1
-   841  00DC  0085               	movwf	5	;volatile
-   842                           
-   843                           ;main.c: 146:     WPU = 0b00000000;
-   844  00DD  0195               	clrf	21	;volatile
-   845  00DE                     l854:	
-   846                           
-   847                           ;main.c: 147:     GP0 = 0;
-   848  00DE  1283               	bcf	3,5	;RP0=0, select bank0
-   849  00DF  1005               	bcf	5,0	;volatile
-   850  00E0                     l856:	
-   851                           
-   852                           ;main.c: 148:     GP1 = 0;
-   853  00E0  1085               	bcf	5,1	;volatile
-   854  00E1                     l858:	
-   855                           
-   856                           ;main.c: 149:     GP2 = 0;
-   857  00E1  1105               	bcf	5,2	;volatile
-   858  00E2                     l860:	
-   859                           
-   860                           ;main.c: 150:     GP4 = 0;
-   861  00E2  1205               	bcf	5,4	;volatile
-   862  00E3                     l862:	
-   863                           
-   864                           ;main.c: 151:     GP5 = 0;
-   865  00E3  1285               	bcf	5,5	;volatile
-   866  00E4                     l864:	
-   867                           
-   868                           ;main.c: 152:     GIE = 1;
-   869  00E4  178B               	bsf	11,7	;volatile
-   870  00E5                     l866:	
-   871                           
-   872                           ;main.c: 153:     PEIE= 1;
-   873  00E5  170B               	bsf	11,6	;volatile
-   874  00E6                     l868:	
-   875                           
-   876                           ;main.c: 154:     GPIE = 1;
-   877  00E6  158B               	bsf	11,3	;volatile
-   878  00E7                     l870:	
-   879                           
-   880                           ;main.c: 155:     IOC0= 1;
-   881  00E7  1683               	bsf	3,5	;RP0=1, select bank1
-   882  00E8  1416               	bsf	22,0	;volatile
-   883  00E9                     l75:	
-   884  00E9  0008               	return
-   885  00EA                     __end_of_config_mcu:	
-   886                           
-   887                           	psect	text6
-   888  00F8                     __ptext6:	
-   889 ;; *************** function _config_TM1 *****************
-   890 ;; Defined at:
-   891 ;;		line 181 in file "main.c"
-   892 ;; Parameters:    Size  Location     Type
-   893 ;;		None
-   894 ;; Auto vars:     Size  Location     Type
-   895 ;;		None
-   896 ;; Return value:  Size  Location     Type
-   897 ;;                  1    wreg      void 
-   898 ;; Registers used:
-   899 ;;		wreg, status,2
-   900 ;; Tracked objects:
-   901 ;;		On entry : 0/0
-   902 ;;		On exit  : 0/0
-   903 ;;		Unchanged: 0/0
-   904 ;; Data sizes:     COMMON   BANK0
-   905 ;;      Params:         0       0
-   906 ;;      Locals:         0       0
-   907 ;;      Temps:          0       0
-   908 ;;      Totals:         0       0
-   909 ;;Total ram usage:        0 bytes
-   910 ;; Hardware stack levels used:    1
-   911 ;; Hardware stack levels required when called:    1
-   912 ;; This function calls:
-   913 ;;		Nothing
-   914 ;; This function is called by:
-   915 ;;		_main
-   916 ;; This function uses a non-reentrant model
-   917 ;;
-   918                           
-   919                           
-   920                           ;psect for function _config_TM1
-   921  00F8                     _config_TM1:	
-   922  00F8                     l874:	
-   923                           ;incstack = 0
-   924                           ; Regs used in _config_TM1: [wreg+status,2]
-   925                           
-   926                           
-   927                           ;main.c: 182:     T1CON = 0b00110000;
-   928  00F8  3030               	movlw	48
-   929  00F9  1283               	bcf	3,5	;RP0=0, select bank0
-   930  00FA  0090               	movwf	16	;volatile
-   931  00FB                     l876:	
-   932                           
-   933                           ;main.c: 183:     TMR1IE = 1;
-   934  00FB  1683               	bsf	3,5	;RP0=1, select bank1
-   935  00FC  140C               	bsf	12,0	;volatile
-   936  00FD                     l878:	
-   937                           
-   938                           ;main.c: 184:     TMR1L = 0x00;
-   939  00FD  1283               	bcf	3,5	;RP0=0, select bank0
-   940  00FE  018E               	clrf	14	;volatile
-   941  00FF                     l880:	
-   942                           
-   943                           ;main.c: 185:     TMR1H = 0x00;
-   944  00FF  018F               	clrf	15	;volatile
-   945  0100                     l81:	
-   946  0100  0008               	return
-   947  0101                     __end_of_config_TM1:	
+   826                           	psect	text5
+   827  00D0                     __ptext5:	
+   828 ;; *************** function _config_mcu *****************
+   829 ;; Defined at:
+   830 ;;		line 137 in file "main.c"
+   831 ;; Parameters:    Size  Location     Type
+   832 ;;		None
+   833 ;; Auto vars:     Size  Location     Type
+   834 ;;		None
+   835 ;; Return value:  Size  Location     Type
+   836 ;;                  1    wreg      void 
+   837 ;; Registers used:
+   838 ;;		wreg, status,2
+   839 ;; Tracked objects:
+   840 ;;		On entry : 0/0
+   841 ;;		On exit  : 0/0
+   842 ;;		Unchanged: 0/0
+   843 ;; Data sizes:     COMMON   BANK0
+   844 ;;      Params:         0       0
+   845 ;;      Locals:         0       0
+   846 ;;      Temps:          0       0
+   847 ;;      Totals:         0       0
+   848 ;;Total ram usage:        0 bytes
+   849 ;; Hardware stack levels used:    1
+   850 ;; Hardware stack levels required when called:    1
+   851 ;; This function calls:
+   852 ;;		Nothing
+   853 ;; This function is called by:
+   854 ;;		_main
+   855 ;; This function uses a non-reentrant model
+   856 ;;
+   857                           
+   858                           
+   859                           ;psect for function _config_mcu
+   860  00D0                     _config_mcu:	
+   861  00D0                     l887:	
+   862                           ;incstack = 0
+   863                           ; Regs used in _config_mcu: [wreg+status,2]
+   864                           
+   865                           
+   866                           ;main.c: 138:     ANSEL = 0b00000000;
+   867  00D0  1683               	bsf	3,5	;RP0=1, select bank1
+   868  00D1  019F               	clrf	31	;volatile
+   869  00D2                     l889:	
+   870                           
+   871                           ;main.c: 139:     CMCON = 0b00000111;
+   872  00D2  3007               	movlw	7
+   873  00D3  1283               	bcf	3,5	;RP0=0, select bank0
+   874  00D4  0099               	movwf	25	;volatile
+   875  00D5                     l891:	
+   876                           
+   877                           ;main.c: 140:     TRISIO = 0b11001001;
+   878  00D5  30C9               	movlw	201
+   879  00D6  1683               	bsf	3,5	;RP0=1, select bank1
+   880  00D7  0085               	movwf	5	;volatile
+   881                           
+   882                           ;main.c: 141:     WPU = 0b00000000;
+   883  00D8  0195               	clrf	21	;volatile
+   884  00D9                     l893:	
+   885                           
+   886                           ;main.c: 142:     GP0 = 0;
+   887  00D9  1283               	bcf	3,5	;RP0=0, select bank0
+   888  00DA  1005               	bcf	5,0	;volatile
+   889  00DB                     l895:	
+   890                           
+   891                           ;main.c: 143:     GP1 = 0;
+   892  00DB  1085               	bcf	5,1	;volatile
+   893  00DC                     l897:	
+   894                           
+   895                           ;main.c: 144:     GP2 = 0;
+   896  00DC  1105               	bcf	5,2	;volatile
+   897  00DD                     l899:	
+   898                           
+   899                           ;main.c: 145:     GP4 = 0;
+   900  00DD  1205               	bcf	5,4	;volatile
+   901  00DE                     l901:	
+   902                           
+   903                           ;main.c: 146:     GP5 = 0;
+   904  00DE  1285               	bcf	5,5	;volatile
+   905  00DF                     l903:	
+   906                           
+   907                           ;main.c: 147:     GIE = 1;
+   908  00DF  178B               	bsf	11,7	;volatile
+   909  00E0                     l905:	
+   910                           
+   911                           ;main.c: 148:     PEIE= 1;
+   912  00E0  170B               	bsf	11,6	;volatile
+   913  00E1                     l69:	
+   914  00E1  0008               	return
+   915  00E2                     __end_of_config_mcu:	
+   916                           
+   917                           	psect	text6
+   918  00F0                     __ptext6:	
+   919 ;; *************** function _config_Timer1 *****************
+   920 ;; Defined at:
+   921 ;;		line 170 in file "main.c"
+   922 ;; Parameters:    Size  Location     Type
+   923 ;;		None
+   924 ;; Auto vars:     Size  Location     Type
+   925 ;;		None
+   926 ;; Return value:  Size  Location     Type
+   927 ;;                  1    wreg      void 
+   928 ;; Registers used:
+   929 ;;		wreg, status,2
+   930 ;; Tracked objects:
+   931 ;;		On entry : 0/0
+   932 ;;		On exit  : 0/0
+   933 ;;		Unchanged: 0/0
+   934 ;; Data sizes:     COMMON   BANK0
+   935 ;;      Params:         0       0
+   936 ;;      Locals:         0       0
+   937 ;;      Temps:          0       0
+   938 ;;      Totals:         0       0
+   939 ;;Total ram usage:        0 bytes
+   940 ;; Hardware stack levels used:    1
+   941 ;; Hardware stack levels required when called:    1
+   942 ;; This function calls:
+   943 ;;		Nothing
+   944 ;; This function is called by:
+   945 ;;		_main
+   946 ;; This function uses a non-reentrant model
+   947 ;;
    948                           
-   949                           	psect	text7
-   950  00AC                     __ptext7:	
-   951 ;; *************** function _isr *****************
-   952 ;; Defined at:
-   953 ;;		line 275 in file "main.c"
-   954 ;; Parameters:    Size  Location     Type
-   955 ;;		None
-   956 ;; Auto vars:     Size  Location     Type
-   957 ;;		None
-   958 ;; Return value:  Size  Location     Type
-   959 ;;                  1    wreg      void 
-   960 ;; Registers used:
-   961 ;;		status,2
-   962 ;; Tracked objects:
-   963 ;;		On entry : 0/0
-   964 ;;		On exit  : 0/0
-   965 ;;		Unchanged: 0/0
-   966 ;; Data sizes:     COMMON   BANK0
-   967 ;;      Params:         0       0
-   968 ;;      Locals:         0       0
-   969 ;;      Temps:          0       2
-   970 ;;      Totals:         0       2
-   971 ;;Total ram usage:        2 bytes
-   972 ;; Hardware stack levels used:    1
-   973 ;; This function calls:
-   974 ;;		Nothing
-   975 ;; This function is called by:
-   976 ;;		Interrupt level 1
-   977 ;; This function uses a non-reentrant model
-   978 ;;
-   979                           
-   980                           
-   981                           ;psect for function _isr
-   982  00AC                     _isr:	
-   983  00AC                     i1l954:	
-   984                           
-   985                           ;main.c: 281:     if ((GPIE && GPIF) == 1){
-   986  00AC  1D8B               	btfss	11,3	;volatile
-   987  00AD  28AF               	goto	u25_21
-   988  00AE  28B0               	goto	u25_20
-   989  00AF                     u25_21:	
-   990  00AF  28BD               	goto	i1l107
-   991  00B0                     u25_20:	
-   992  00B0                     i1l956:	
-   993  00B0  1C0B               	btfss	11,0	;volatile
-   994  00B1  28B3               	goto	u26_21
-   995  00B2  28B4               	goto	u26_20
-   996  00B3                     u26_21:	
-   997  00B3  28BD               	goto	i1l107
-   998  00B4                     u26_20:	
-   999  00B4                     i1l958:	
-  1000                           
-  1001                           ;main.c: 282:         if (GP0 == 1 || GP0 == 0){
-  1002  00B4  1805               	btfsc	5,0	;volatile
-  1003  00B5  28B7               	goto	u27_21
-  1004  00B6  28B8               	goto	u27_20
-  1005  00B7                     u27_21:	
-  1006  00B7  28BC               	goto	i1l110
-  1007  00B8                     u27_20:	
-  1008  00B8                     i1l960:	
-  1009  00B8  1805               	btfsc	5,0	;volatile
-  1010  00B9  28BB               	goto	u28_21
-  1011  00BA  28BC               	goto	u28_20
-  1012  00BB                     u28_21:	
-  1013  00BB  28BD               	goto	i1l107
-  1014  00BC                     u28_20:	
-  1015  00BC                     i1l110:	
-  1016                           
-  1017                           ;main.c: 283:         GPIF = 0;
-  1018  00BC  100B               	bcf	11,0	;volatile
-  1019  00BD                     i1l107:	
-  1020                           ;main.c: 285:     }
-  1021                           
-  1022                           
-  1023                           ;main.c: 292:     if(TMR1IE == 1 && TMR1IF== 1)
-  1024  00BD  1683               	bsf	3,5	;RP0=1, select bank1
+   949                           
+   950                           ;psect for function _config_Timer1
+   951  00F0                     _config_Timer1:	
+   952  00F0                     l909:	
+   953                           ;incstack = 0
+   954                           ; Regs used in _config_Timer1: [wreg+status,2]
+   955                           
+   956                           
+   957                           ;main.c: 171:     T1CON = 0b00110000;
+   958  00F0  3030               	movlw	48
+   959  00F1  1283               	bcf	3,5	;RP0=0, select bank0
+   960  00F2  0090               	movwf	16	;volatile
+   961  00F3                     l911:	
+   962                           
+   963                           ;main.c: 172:     TMR1IE = 1;
+   964  00F3  1683               	bsf	3,5	;RP0=1, select bank1
+   965  00F4  140C               	bsf	12,0	;volatile
+   966  00F5                     l913:	
+   967                           
+   968                           ;main.c: 173:     TMR1L = 0x00;
+   969  00F5  1283               	bcf	3,5	;RP0=0, select bank0
+   970  00F6  018E               	clrf	14	;volatile
+   971  00F7                     l915:	
+   972                           
+   973                           ;main.c: 174:     TMR1H = 0x00;
+   974  00F7  018F               	clrf	15	;volatile
+   975  00F8                     l75:	
+   976  00F8  0008               	return
+   977  00F9                     __end_of_config_Timer1:	
+   978                           
+   979                           	psect	text7
+   980  00B8                     __ptext7:	
+   981 ;; *************** function _isr *****************
+   982 ;; Defined at:
+   983 ;;		line 299 in file "main.c"
+   984 ;; Parameters:    Size  Location     Type
+   985 ;;		None
+   986 ;; Auto vars:     Size  Location     Type
+   987 ;;		None
+   988 ;; Return value:  Size  Location     Type
+   989 ;;                  1    wreg      void 
+   990 ;; Registers used:
+   991 ;;		status,2
+   992 ;; Tracked objects:
+   993 ;;		On entry : 0/0
+   994 ;;		On exit  : 0/0
+   995 ;;		Unchanged: 0/0
+   996 ;; Data sizes:     COMMON   BANK0
+   997 ;;      Params:         0       0
+   998 ;;      Locals:         0       0
+   999 ;;      Temps:          0       2
+  1000 ;;      Totals:         0       2
+  1001 ;;Total ram usage:        2 bytes
+  1002 ;; Hardware stack levels used:    1
+  1003 ;; This function calls:
+  1004 ;;		Nothing
+  1005 ;; This function is called by:
+  1006 ;;		Interrupt level 1
+  1007 ;; This function uses a non-reentrant model
+  1008 ;;
+  1009                           
+  1010                           
+  1011                           ;psect for function _isr
+  1012  00B8                     _isr:	
+  1013  00B8                     i1l975:	
+  1014                           
+  1015                           ;main.c: 316:     if(TMR1IE == 1 && TMR1IF== 1)
+  1016  00B8  1683               	bsf	3,5	;RP0=1, select bank1
+  1017  00B9  1C0C               	btfss	12,0	;volatile
+  1018  00BA  28BC               	goto	u27_21
+  1019  00BB  28BD               	goto	u27_20
+  1020  00BC                     u27_21:	
+  1021  00BC  28C8               	goto	i1l107
+  1022  00BD                     u27_20:	
+  1023  00BD                     i1l977:	
+  1024  00BD  1283               	bcf	3,5	;RP0=0, select bank0
   1025  00BE  1C0C               	btfss	12,0	;volatile
-  1026  00BF  28C1               	goto	u29_21
-  1027  00C0  28C2               	goto	u29_20
-  1028  00C1                     u29_21:	
-  1029  00C1  28CD               	goto	i1l112
-  1030  00C2                     u29_20:	
-  1031  00C2                     i1l962:	
-  1032  00C2  1283               	bcf	3,5	;RP0=0, select bank0
-  1033  00C3  1C0C               	btfss	12,0	;volatile
-  1034  00C4  28C6               	goto	u30_21
-  1035  00C5  28C7               	goto	u30_20
-  1036  00C6                     u30_21:	
-  1037  00C6  28CD               	goto	i1l112
-  1038  00C7                     u30_20:	
-  1039  00C7                     i1l964:	
-  1040                           
-  1041                           ;main.c: 293:     {;main.c: 294:         timer_out = 1;
-  1042  00C7  01AA               	clrf	_timer_out
-  1043  00C8  0AAA               	incf	_timer_out,f
-  1044                           
-  1045                           ;main.c: 295:         TMR1IF = 0;
-  1046  00C9  100C               	bcf	12,0	;volatile
-  1047                           
-  1048                           ;main.c: 296:         TMR1ON = 0;
-  1049  00CA  1010               	bcf	16,0	;volatile
-  1050  00CB                     i1l966:	
-  1051                           
-  1052                           ;main.c: 297:         TMR1L = 0x00;
-  1053  00CB  018E               	clrf	14	;volatile
-  1054                           
-  1055                           ;main.c: 298:         TMR1H = 0x00;
-  1056  00CC  018F               	clrf	15	;volatile
-  1057  00CD                     i1l112:	
-  1058  00CD  1283               	bcf	3,5	;RP0=0, select bank0
-  1059  00CE  0821               	movf	??_isr+1,w
-  1060  00CF  008A               	movwf	10
-  1061  00D0  0E20               	swapf	??_isr^0,w
-  1062  00D1  0083               	movwf	3
-  1063  00D2  0EDE               	swapf	btemp,f
-  1064  00D3  0E5E               	swapf	btemp,w
-  1065  00D4  0009               	retfie
-  1066  00D5                     __end_of_isr:	
-  1067  005E                     btemp	set	94	;btemp
-  1068  005E                     wtemp0	set	94
-  1069                           
-  1070                           	psect	intentry
-  1071  0004                     __pintentry:	
-  1072                           ;incstack = 0
-  1073                           ; Regs used in _isr: [status,2]
-  1074                           
-  1075  0004                     interrupt_function:	
-  1076  005E                     saved_w	set	btemp
-  1077  0004  00DE               	movwf	btemp
-  1078  0005  0E03               	swapf	3,w
-  1079  0006  1283               	bcf	3,5	;RP0=0, select bank0
-  1080  0007  00A0               	movwf	??_isr
-  1081  0008  080A               	movf	10,w
-  1082  0009  00A1               	movwf	??_isr+1
-  1083  000A  28AC               	ljmp	_isr
+  1026  00BF  28C1               	goto	u28_21
+  1027  00C0  28C2               	goto	u28_20
+  1028  00C1                     u28_21:	
+  1029  00C1  28C8               	goto	i1l107
+  1030  00C2                     u28_20:	
+  1031  00C2                     i1l979:	
+  1032                           
+  1033                           ;main.c: 317:     {;main.c: 318:         timer_out = 1;
+  1034  00C2  01A9               	clrf	_timer_out
+  1035  00C3  0AA9               	incf	_timer_out,f
+  1036                           
+  1037                           ;main.c: 319:         TMR1IF = 0;
+  1038  00C4  100C               	bcf	12,0	;volatile
+  1039                           
+  1040                           ;main.c: 320:         TMR1ON = 0;
+  1041  00C5  1010               	bcf	16,0	;volatile
+  1042  00C6                     i1l981:	
+  1043                           
+  1044                           ;main.c: 321:         TMR1L = 0x00;
+  1045  00C6  018E               	clrf	14	;volatile
+  1046                           
+  1047                           ;main.c: 322:         TMR1H = 0x00;
+  1048  00C7  018F               	clrf	15	;volatile
+  1049  00C8                     i1l107:	
+  1050  00C8  1283               	bcf	3,5	;RP0=0, select bank0
+  1051  00C9  0821               	movf	??_isr+1,w
+  1052  00CA  008A               	movwf	10
+  1053  00CB  0E20               	swapf	??_isr^0,w
+  1054  00CC  0083               	movwf	3
+  1055  00CD  0EDE               	swapf	btemp,f
+  1056  00CE  0E5E               	swapf	btemp,w
+  1057  00CF  0009               	retfie
+  1058  00D0                     __end_of_isr:	
+  1059  005E                     btemp	set	94	;btemp
+  1060  005E                     wtemp0	set	94
+  1061                           
+  1062                           	psect	intentry
+  1063  0004                     __pintentry:	
+  1064                           ;incstack = 0
+  1065                           ; Regs used in _isr: [status,2]
+  1066                           
+  1067  0004                     interrupt_function:	
+  1068  005E                     saved_w	set	btemp
+  1069  0004  00DE               	movwf	btemp
+  1070  0005  0E03               	swapf	3,w
+  1071  0006  1283               	bcf	3,5	;RP0=0, select bank0
+  1072  0007  00A0               	movwf	??_isr
+  1073  0008  080A               	movf	10,w
+  1074  0009  00A1               	movwf	??_isr+1
+  1075  000A  28B8               	ljmp	_isr
 
 
 Data Sizes:
@@ -1115,7 +1105,7 @@ Data Sizes:
 Auto Spaces:
     Space          Size  Autos    Used
     COMMON            0      0       0
-    BANK0            62      9      12
+    BANK0            62      8      11
 
 Pointer List with Targets:
 
@@ -1132,6 +1122,7 @@ Critical Paths under _isr in COMMON
 Critical Paths under _main in BANK0
 
     _main->_timer_on
+    _timer_on->_read_button
 
 Critical Paths under _isr in BANK0
 
@@ -1142,18 +1133,19 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 0     0      0      71
-                         _config_TM1
+ (0) _main                                                 0     0      0      50
+                      _config_Timer1
                          _config_mcu
                          _config_osc
                          _config_var
                         _read_button
                            _timer_on
  ---------------------------------------------------------------------------------
- (1) _timer_on                                             7     7      0      71
-                                              2 BANK0      7     7      0
+ (1) _timer_on                                             4     4      0      50
+                                              4 BANK0      4     4      0
+                        _read_button
  ---------------------------------------------------------------------------------
- (1) _read_button                                          2     2      0       0
+ (2) _read_button                                          2     2      0       0
                                               2 BANK0      2     2      0
  ---------------------------------------------------------------------------------
  (1) _config_var                                           0     0      0       0
@@ -1162,27 +1154,28 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (1) _config_mcu                                           0     0      0       0
  ---------------------------------------------------------------------------------
- (1) _config_TM1                                           0     0      0       0
+ (1) _config_Timer1                                        0     0      0       0
  ---------------------------------------------------------------------------------
- Estimated maximum stack depth 1
+ Estimated maximum stack depth 2
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (2) _isr                                                  2     2      0       0
+ (3) _isr                                                  2     2      0       0
                                               0 BANK0      2     2      0
  ---------------------------------------------------------------------------------
- Estimated maximum stack depth 2
+ Estimated maximum stack depth 3
  ---------------------------------------------------------------------------------
 
  Call Graph Graphs:
 
  _main (ROOT)
-   _config_TM1
+   _config_Timer1
    _config_mcu
    _config_osc
    _config_var
    _read_button
    _timer_on
+     _read_button
 
  _isr (ROOT)
 
@@ -1199,79 +1192,77 @@ BITSFR1              0      0       0       2        0.0%
 SFR1                 0      0       0       2        0.0%
 STACK                0      0       0       2        0.0%
 BITBANK0            3E      0       0       3        0.0%
-BANK0               3E      9       C       4       19.4%
-ABS                  0      0       C       5        0.0%
-DATA                 0      0       C       6        0.0%
+BANK0               3E      8       B       4       17.7%
+ABS                  0      0       B       5        0.0%
+DATA                 0      0       B       6        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Sat Feb  8 01:16:32 2020
+Symbol Table                                                                                   Mon Feb 10 18:43:49 2020
 
-            __CFG_CP$OFF 0000                       l72 010A                       l81 0100  
-                     l90 0063                       l75 00E9                       l78 0105  
-                     l94 00AB                       l86 0052                       l96 0078  
-                     l89 005F                      l102 00AB                      l900 008F  
-                    l902 0095                      l920 0025                      l912 0012  
-                    l850 00D7                      l906 0098                      l930 003D  
-                    l922 002B                      l914 001B                      l860 00E2  
-                    l852 00DA                      l940 0062                      l932 0043  
-                    l924 002C                      l916 001C                      l870 00E7  
-                    l862 00E3                      l854 00DE                      l846 0106  
-                    l934 0044                      l926 002D                      l918 001F  
-                    l950 00EF                      l942 00EA                      l880 00FF  
-                    l864 00E4                      l856 00E0                      l848 00D5  
-                    l872 0101                      l928 0033                      l952 00F5  
-                    l944 00EB                      l874 00F8                      l866 00E5  
-                    l858 00E1                      l890 007B                      l882 0064  
-                    l938 0052                      l946 00EC                      l876 00FB  
-                    l868 00E6                      l892 007F                      l884 0069  
-                    l948 00EE                      _GP0 0028                      _GP1 0029  
-                    l878 00FD                      l894 0085                      l886 0072  
-                    _GP2 002A                      l896 0089                      _GP4 002C  
-                    _GP5 002D                      l898 008B                      _GIE 005F  
-                    l988 00A0                      u200 0025                      u201 0024  
-                    u210 0033                      u211 0032                      u220 0043  
-                    u221 0042                      u230 005F                      u231 005E  
-                    u160 0069                      u240 00F5                      u161 0068  
-                    u241 00F4                      u170 0077                      u171 0076  
-                    u235 005B                      u180 0085                      u181 0084  
-                    u317 004A                      u190 0095                      u191 0094  
-                    u327 006D             __CFG_CPD$OFF 0000                      _WPU 0095  
-                    _isr 00AC                     ?_isr 0020                     _IOC0 04B0  
-                   _GPIE 005B                     _GPIF 0058                     _PEIE 005E  
-                   _main 00EA                     _modo 002B                     btemp 005E  
-          __CFG_BOREN$ON 0000                     start 000B                    ??_isr 0020  
-                  OSCCAL 0090                    STATUS 0003                    ?_main 0020  
-          __CFG_WDTE$OFF 0000                    _CMCON 0019                    _ANSEL 009F  
-                  _T1CON 0010                    i1l110 00BC                    i1l112 00CD  
-                  i1l107 00BD                    i1l960 00B8                    i1l962 00C2  
-                  i1l954 00AC                    i1l964 00C7                    i1l956 00B0  
-                  i1l966 00CB                    i1l958 00B4                    u30_20 00C7  
-                  u30_21 00C6                    u25_20 00B0                    u25_21 00AF  
-                  _TMR1H 000F                    _TMR1L 000E                    u26_20 00B4  
-                  u26_21 00B3                    u27_20 00B8                    u27_21 00B7  
-                  u28_20 00BC                    u28_21 00BB                    u29_20 00C2  
-                  u29_21 00C1             ?_read_button 0020                    pclath 000A  
-                  status 0003                    wtemp0 005E           __CFG_MCLRE$OFF 0000  
-        __initialization 000C             __end_of_main 00F8                   ??_main 0000  
-                 _TMR1IE 0460                   _TMR1IF 0060                   _TMR1ON 0080  
-                 _TRISIO 0085           __CFG_PWRTE$OFF 0000                   saved_w 005E  
-       __end_of_timer_on 0064  __end_of__initialization 0010           __pcstackCOMMON 0000  
-   __size_of_read_button 0048               __pbssBANK0 0029               __pmaintext 00EA  
-             __pintentry 0004               _config_TM1 00F8               _config_mcu 00D5  
-             _config_osc 0106               _config_var 0101                ?_timer_on 0020  
-                __ptext1 0012                  __ptext2 0064                  __ptext3 0101  
-                __ptext4 0106                  __ptext5 00D5                  __ptext6 00F8  
-                __ptext7 00AC             __size_of_isr 0029     end_of_initialization 0010  
-             ??_timer_on 0022              ?_config_TM1 0020              ?_config_mcu 0020  
-            ?_config_osc 0020              ?_config_var 0020      start_initialization 000C  
-            __end_of_isr 00D5      __size_of_config_TM1 0009      __size_of_config_mcu 0015  
+            __CFG_CP$OFF 0000                       l72 00FD                       l66 0102  
+                     l75 00F8                       l69 00E1                       l93 00B7  
+                     l86 0069                       l95 0082                       l89 006D  
+                    l101 00B7                      l901 00DE                      l911 00F3  
+                    l903 00DF                      l913 00F5                      l905 00E0  
+                    l921 001D                      l915 00F7                      l907 00F9  
+                    l851 006E                      l931 0031                      l923 0023  
+                    l909 00F0                      l861 0086                      l853 0073  
+                    l941 0049                      l933 0032                      l925 0024  
+                    l917 0012                      l871 0099                      l863 008A  
+                    l855 007C                      l951 0053                      l943 004A  
+                    l935 0033                      l927 002A                      l919 001B  
+                    l873 009F                      l865 0090                      l961 0067  
+                    l953 0054                      l945 004B                      l937 0039  
+                    l929 002B                      l891 00D5                      l859 0084  
+                    l947 004C                      l939 0043                      l955 0057  
+                    l971 00E7                      l963 00E2                      _GP0 0028  
+                    l893 00D9                      l885 00FE                      l869 0095  
+                    l957 0064                      l949 0052                      l973 00ED  
+                    l965 00E3                      _GP1 0029                      _GP2 002A  
+                    l895 00DB                      l887 00D0                      l879 00A4  
+                    l959 0066                      l967 00E4                      _GP4 002C  
+                    l897 00DC                      l889 00D2                      l969 00E6  
+                    _GP5 002D                      l899 00DD                      _GIE 005F  
+                    u200 002A                      u201 0029                      u210 0039  
+                    u211 0038                      u220 0049                      u221 0048  
+                    u150 0073                      u230 0052                      u151 0072  
+                    u231 0051                      u160 0081                      u240 0064  
+                    u161 0080                      u241 0063                      u170 0090  
+                    u250 006D                      u171 008F                      u251 006C  
+                    u180 009F                      u260 00ED                      u181 009E  
+                    u245 0060                      u261 00EC                      u190 0023  
+                    u191 0022             __CFG_CPD$OFF 0000                      u297 0077  
+                    _WPU 0095                      _isr 00B8                     l1003 00AC  
+                   ?_isr 0020                     _PEIE 005E                     _main 00E2  
+                   _modo 002A                     btemp 005E            __CFG_BOREN$ON 0000  
+                   start 000B                    ??_isr 0020                    OSCCAL 0090  
+                  STATUS 0003                    ?_main 0020            __CFG_WDTE$OFF 0000  
+                  _CMCON 0019                    _ANSEL 009F                    _T1CON 0010  
+                  i1l107 00C8                    i1l981 00C6                    i1l975 00B8  
+                  i1l977 00BD                    i1l979 00C2                    _TMR1H 000F  
+                  _TMR1L 000E                    u27_20 00BD                    u27_21 00BC  
+                  u28_20 00C2                    u28_21 00C1             ?_read_button 0020  
+        ??_config_Timer1 0000                    pclath 000A                    status 0003  
+                  wtemp0 005E           __CFG_MCLRE$OFF 0000          __initialization 000C  
+           __end_of_main 00F0                   ??_main 0000                   _TMR1IE 0460  
+                 _TMR1IF 0060                   _TMR1ON 0080                   _TRISIO 0085  
+         __CFG_PWRTE$OFF 0000                   saved_w 005E         __end_of_timer_on 006E  
+__end_of__initialization 0010           __pcstackCOMMON 0000     __size_of_read_button 004A  
+             __pbssBANK0 0028               __pmaintext 00E2               __pintentry 0004  
+             _config_mcu 00D0               _config_osc 00FE               _config_var 00F9  
+              ?_timer_on 0020                  __ptext1 0012                  __ptext2 006E  
+                __ptext3 00F9                  __ptext4 00FE                  __ptext5 00D0  
+                __ptext6 00F0                  __ptext7 00B8             __size_of_isr 0018  
+  __end_of_config_Timer1 00F9     end_of_initialization 0010               ??_timer_on 0000  
+            ?_config_mcu 0020              ?_config_osc 0020              ?_config_var 0020  
+    start_initialization 000C              __end_of_isr 00D0      __size_of_config_mcu 0012  
     __size_of_config_osc 0005      __size_of_config_var 0005                ___latbits 0000  
-          __pcstackBANK0 0020            ??_read_button 0022        __size_of_timer_on 0052  
-      interrupt_function 0004      __end_of_read_button 00AC                _timer_out 002A  
-           ??_config_TM1 0000             ??_config_mcu 0000             ??_config_osc 0000  
-           ??_config_var 0000       __end_of_config_TM1 0101       __end_of_config_mcu 00EA  
-     __end_of_config_osc 010B       __end_of_config_var 0106   timer_on@timer_cont_min 0027  
- timer_on@timer_cont_seg 0025              _read_button 0064            __size_of_main 000E  
-               _timer_on 0012                 intlevel1 0000       _count_button_press 0029  
-      __CFG_FOSC$INTRCIO 0000  
+          __pcstackBANK0 0020            ??_read_button 0022        __size_of_timer_on 005C  
+      interrupt_function 0004      __end_of_read_button 00B8                _timer_out 0029  
+           ??_config_mcu 0000             ??_config_osc 0000             ??_config_var 0000  
+     __end_of_config_mcu 00E2       __end_of_config_osc 0103       __end_of_config_var 00FE  
+ timer_on@timer_cont_min 0026   timer_on@timer_cont_seg 0024   __size_of_config_Timer1 0009  
+            _read_button 006E            __size_of_main 000E                 _timer_on 0012  
+               intlevel1 0000            _config_Timer1 00F0           ?_config_Timer1 0020  
+     _count_button_press 0028        __CFG_FOSC$INTRCIO 0000  

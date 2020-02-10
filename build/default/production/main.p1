@@ -1,26 +1,26 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"87 main.c
-[; ;main.c: 87: void config_osc(void);
+"85 main.c
+[; ;main.c: 85: void config_osc(void);
 [v _config_osc `(v ~T0 @X0 0 ef ]
-"88
-[; ;main.c: 88: void config_mcu(void);
+"86
+[; ;main.c: 86: void config_mcu(void);
 [v _config_mcu `(v ~T0 @X0 0 ef ]
-"89
-[; ;main.c: 89: void config_var(void);
+"87
+[; ;main.c: 87: void config_var(void);
 [v _config_var `(v ~T0 @X0 0 ef ]
-"95
-[; ;main.c: 95: void config_TM1(void);
-[v _config_TM1 `(v ~T0 @X0 0 ef ]
 "91
-[; ;main.c: 91: void read_button(void);
+[; ;main.c: 91: void config_Timer1(void);
+[v _config_Timer1 `(v ~T0 @X0 0 ef ]
+"89
+[; ;main.c: 89: void read_button(void);
 [v _read_button `(v ~T0 @X0 0 ef ]
-"115
-[; ;main.c: 115:         if(modo == modo_timer)
-[c E726 0 1 2 .. ]
-[n E726 . modo_desligado modo_timer modo_sempre_ligado  ]
-"90
-[; ;main.c: 90: void timer_on(void);
+"110
+[; ;main.c: 110:         if(modo == modo_timer)
+[c E726 0 1 2 3 .. ]
+[n E726 . modo_desligado modo_timer modo_sempre_ligado modo_apagado  ]
+"88
+[; ;main.c: 88: void timer_on(void);
 [v _timer_on `(v ~T0 @X0 0 ef ]
 "1404 /opt/microchip/xc8/v2.10/pic/include/pic12f675.h
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic12f675.h: 1404: extern volatile unsigned char ANSEL __attribute__((address(0x09F)));
@@ -55,12 +55,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1675
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic12f675.h: 1675: extern volatile __bit PEIE __attribute__((address(0x5E)));
 [v _PEIE `Vb ~T0 @X0 0 e@94 ]
-"1603
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic12f675.h: 1603: extern volatile __bit GPIE __attribute__((address(0x5B)));
-[v _GPIE `Vb ~T0 @X0 0 e@91 ]
-"1636
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic12f675.h: 1636: extern volatile __bit IOC0 __attribute__((address(0x4B0)));
-[v _IOC0 `Vb ~T0 @X0 0 e@1200 ]
 "499
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic12f675.h: 499: extern volatile unsigned char T1CON __attribute__((address(0x010)));
 [v _T1CON `Vuc ~T0 @X0 0 e@16 ]
@@ -82,10 +76,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p i __delay ]
 [t ~ __interrupt . k ]
 [t T2 __interrupt ]
-"1606 /opt/microchip/xc8/v2.10/pic/include/pic12f675.h
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic12f675.h: 1606: extern volatile __bit GPIF __attribute__((address(0x58)));
-[v _GPIF `Vb ~T0 @X0 0 e@88 ]
-"1741
+"1741 /opt/microchip/xc8/v2.10/pic/include/pic12f675.h
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic12f675.h: 1741: extern volatile __bit TMR1IF __attribute__((address(0x60)));
 [v _TMR1IF `Vb ~T0 @X0 0 e@96 ]
 "12 main.c
@@ -198,460 +189,483 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1406
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic12f675.h: 1406: __asm("ANSEL equ 09Fh");
 [; <" ANSEL equ 09Fh ;# ">
-"80 main.c
-[; ;main.c: 80: char modo;
+"78 main.c
+[; ;main.c: 78: char modo;
 [v _modo `uc ~T0 @X0 1 e ]
-"81
-[; ;main.c: 81: char timer_out;
+"79
+[; ;main.c: 79: char timer_out;
 [v _timer_out `uc ~T0 @X0 1 e ]
-"82
-[; ;main.c: 82: char count_button_press;
+"80
+[; ;main.c: 80: char count_button_press;
 [v _count_button_press `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"104
-[; ;main.c: 104: int main(void) {
+"99
+[; ;main.c: 99: int main(void) {
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"106
-[; ;main.c: 106:     config_osc();
+"101
+[; ;main.c: 101:     config_osc();
 [e ( _config_osc ..  ]
-"107
-[; ;main.c: 107:     config_mcu();
+"102
+[; ;main.c: 102:     config_mcu();
 [e ( _config_mcu ..  ]
-"108
-[; ;main.c: 108:     config_var();
+"103
+[; ;main.c: 103:     config_var();
 [e ( _config_var ..  ]
-"109
-[; ;main.c: 109:     config_TM1();
-[e ( _config_TM1 ..  ]
-"111
-[; ;main.c: 111:     while (1)
+"104
+[; ;main.c: 104:     config_Timer1();
+[e ( _config_Timer1 ..  ]
+"106
+[; ;main.c: 106:     while (1)
 [e :U 88 ]
-"112
-[; ;main.c: 112:     {
+"107
+[; ;main.c: 107:     {
 {
-"114
-[; ;main.c: 114:         read_button();
+"109
+[; ;main.c: 109:         read_button();
 [e ( _read_button ..  ]
-"115
-[; ;main.c: 115:         if(modo == modo_timer)
+"110
+[; ;main.c: 110:         if(modo == modo_timer)
 [e $ ! == -> _modo `i -> . `E726 1 `i 90  ]
-"116
-[; ;main.c: 116:         {
+"111
+[; ;main.c: 111:         {
 {
-"117
-[; ;main.c: 117:             timer_on();
+"112
+[; ;main.c: 112:             timer_on();
 [e ( _timer_on ..  ]
-"118
-[; ;main.c: 118:         }
+"113
+[; ;main.c: 113:         }
 }
 [e :U 90 ]
-"120
-[; ;main.c: 120:     }
+"115
+[; ;main.c: 115:     }
 }
 [e :U 87 ]
 [e $U 88  ]
 [e :U 89 ]
-"123
-[; ;main.c: 123:     return (0);
+"118
+[; ;main.c: 118:     return (0);
 [e ) -> 0 `i ]
 [e $UE 86  ]
-"124
-[; ;main.c: 124: }
+"119
+[; ;main.c: 119: }
 [e :UE 86 ]
 }
-"130
-[; ;main.c: 130: void config_osc(void){
+"125
+[; ;main.c: 125: void config_osc(void){
 [v _config_osc `(v ~T0 @X0 1 ef ]
 {
 [e :U _config_osc ]
 [f ]
-"131
-[; ;main.c: 131: __asm("BSF STATUS, 5");
+"126
+[; ;main.c: 126: __asm("BSF STATUS, 5");
 [; <" BSF STATUS, 5 ;# ">
-"132
-[; ;main.c: 132: __asm ("CALL 3FFh");
+"127
+[; ;main.c: 127: __asm ("CALL 3FFh");
 [; <" CALL 3FFh ;# ">
-"133
-[; ;main.c: 133: __asm ("MOVWF OSCCAL");
+"128
+[; ;main.c: 128: __asm ("MOVWF OSCCAL");
 [; <" MOVWF OSCCAL ;# ">
-"134
-[; ;main.c: 134: __asm ("BCF STATUS, 5");
+"129
+[; ;main.c: 129: __asm ("BCF STATUS, 5");
 [; <" BCF STATUS, 5 ;# ">
-"135
-[; ;main.c: 135: }
+"130
+[; ;main.c: 130: }
 [e :UE 91 ]
 }
-"142
-[; ;main.c: 142: void config_mcu(void){
+"137
+[; ;main.c: 137: void config_mcu(void){
 [v _config_mcu `(v ~T0 @X0 1 ef ]
 {
 [e :U _config_mcu ]
 [f ]
-"143
-[; ;main.c: 143:     ANSEL = 0b00000000;
+"138
+[; ;main.c: 138:     ANSEL = 0b00000000;
 [e = _ANSEL -> -> 0 `i `uc ]
-"144
-[; ;main.c: 144:     CMCON = 0b00000111;
+"139
+[; ;main.c: 139:     CMCON = 0b00000111;
 [e = _CMCON -> -> 7 `i `uc ]
-"145
-[; ;main.c: 145:     TRISIO = 0b11001001;
+"140
+[; ;main.c: 140:     TRISIO = 0b11001001;
 [e = _TRISIO -> -> 201 `i `uc ]
-"146
-[; ;main.c: 146:     WPU = 0b00000000;
+"141
+[; ;main.c: 141:     WPU = 0b00000000;
 [e = _WPU -> -> 0 `i `uc ]
-"147
-[; ;main.c: 147:     GP0 = 0;
+"142
+[; ;main.c: 142:     GP0 = 0;
 [e = _GP0 -> -> 0 `i `b ]
-"148
-[; ;main.c: 148:     GP1 = 0;
+"143
+[; ;main.c: 143:     GP1 = 0;
 [e = _GP1 -> -> 0 `i `b ]
-"149
-[; ;main.c: 149:     GP2 = 0;
+"144
+[; ;main.c: 144:     GP2 = 0;
 [e = _GP2 -> -> 0 `i `b ]
-"150
-[; ;main.c: 150:     GP4 = 0;
+"145
+[; ;main.c: 145:     GP4 = 0;
 [e = _GP4 -> -> 0 `i `b ]
-"151
-[; ;main.c: 151:     GP5 = 0;
+"146
+[; ;main.c: 146:     GP5 = 0;
 [e = _GP5 -> -> 0 `i `b ]
-"152
-[; ;main.c: 152:     GIE = 1;
+"147
+[; ;main.c: 147:     GIE = 1;
 [e = _GIE -> -> 1 `i `b ]
-"153
-[; ;main.c: 153:     PEIE= 1;
+"148
+[; ;main.c: 148:     PEIE= 1;
 [e = _PEIE -> -> 1 `i `b ]
-"154
-[; ;main.c: 154:     GPIE = 1;
-[e = _GPIE -> -> 1 `i `b ]
-"155
-[; ;main.c: 155:     IOC0= 1;
-[e = _IOC0 -> -> 1 `i `b ]
-"157
-[; ;main.c: 157: }
+"152
+[; ;main.c: 152: }
 [e :UE 92 ]
 }
-"163
-[; ;main.c: 163: void config_var(void){
+"158
+[; ;main.c: 158: void config_var(void){
 [v _config_var `(v ~T0 @X0 1 ef ]
 {
 [e :U _config_var ]
 [f ]
-"164
-[; ;main.c: 164:    count_button_press = 0;
+"159
+[; ;main.c: 159:    count_button_press = 0;
 [e = _count_button_press -> -> 0 `i `uc ]
-"165
-[; ;main.c: 165:    modo = modo_desligado;
+"160
+[; ;main.c: 160:    modo = modo_desligado;
 [e = _modo -> . `E726 0 `uc ]
-"172
-[; ;main.c: 172:     timer_out = 0;
+"161
+[; ;main.c: 161:    timer_out = 0;
 [e = _timer_out -> -> 0 `i `uc ]
-"173
-[; ;main.c: 173: }
+"162
+[; ;main.c: 162: }
 [e :UE 93 ]
 }
-"181
-[; ;main.c: 181: void config_TM1(void){
-[v _config_TM1 `(v ~T0 @X0 1 ef ]
+"170
+[; ;main.c: 170: void config_Timer1(void){
+[v _config_Timer1 `(v ~T0 @X0 1 ef ]
 {
-[e :U _config_TM1 ]
+[e :U _config_Timer1 ]
 [f ]
-"182
-[; ;main.c: 182:     T1CON = 0b00110000;
+"171
+[; ;main.c: 171:     T1CON = 0b00110000;
 [e = _T1CON -> -> 48 `i `uc ]
-"183
-[; ;main.c: 183:     TMR1IE = 1;
+"172
+[; ;main.c: 172:     TMR1IE = 1;
 [e = _TMR1IE -> -> 1 `i `b ]
-"184
-[; ;main.c: 184:     TMR1L = 0x00;
+"173
+[; ;main.c: 173:     TMR1L = 0x00;
 [e = _TMR1L -> -> 0 `i `uc ]
-"185
-[; ;main.c: 185:     TMR1H = 0x00;
+"174
+[; ;main.c: 174:     TMR1H = 0x00;
 [e = _TMR1H -> -> 0 `i `uc ]
-"186
-[; ;main.c: 186: }
+"175
+[; ;main.c: 175: }
 [e :UE 94 ]
 }
-"189
-[; ;main.c: 189: void timer_on(void){
+"178
+[; ;main.c: 178: void timer_on(void){
 [v _timer_on `(v ~T0 @X0 1 ef ]
 {
 [e :U _timer_on ]
 [f ]
-"190
-[; ;main.c: 190:     int timer_cont_seg;
+"179
+[; ;main.c: 179:     int timer_cont_seg;
 [v _timer_cont_seg `i ~T0 @X0 1 a ]
-"191
-[; ;main.c: 191:     int timer_cont_min;
+"180
+[; ;main.c: 180:     int timer_cont_min;
 [v _timer_cont_min `i ~T0 @X0 1 a ]
-"193
-[; ;main.c: 193:     timer_cont_min = 3;
+"182
+[; ;main.c: 182:     timer_cont_min = 3;
 [e = _timer_cont_min -> 3 `i ]
-"194
-[; ;main.c: 194:     timer_cont_seg = 115;
+"183
+[; ;main.c: 183:     timer_cont_seg = 115;
 [e = _timer_cont_seg -> 115 `i ]
-"195
-[; ;main.c: 195:     TMR1ON = 1;
+"184
+[; ;main.c: 184:     TMR1ON = 1;
 [e = _TMR1ON -> -> 1 `i `b ]
-"196
-[; ;main.c: 196:     GP2 = 1;
-[e = _GP2 -> -> 1 `i `b ]
-"197
-[; ;main.c: 197:     while(timer_cont_min > 0)
+"186
+[; ;main.c: 186:     while(timer_cont_min > 0)
 [e $U 96  ]
 [e :U 97 ]
-"198
-[; ;main.c: 198:     {
+"187
+[; ;main.c: 187:     {
 {
-"199
-[; ;main.c: 199:         if(timer_out == 1)
+"188
+[; ;main.c: 188:         if(timer_out == 1)
 [e $ ! == -> _timer_out `i -> 1 `i 99  ]
-"200
-[; ;main.c: 200:         {
+"189
+[; ;main.c: 189:         {
 {
-"202
-[; ;main.c: 202:             timer_cont_seg--;
-[e -- _timer_cont_seg -> 1 `i ]
-"203
-[; ;main.c: 203:             timer_out = 0;
-[e = _timer_out -> -> 0 `i `uc ]
-"204
-[; ;main.c: 204:             TMR1ON=1;
-[e = _TMR1ON -> -> 1 `i `b ]
-"206
-[; ;main.c: 206:                 if(timer_cont_seg == 0)
-[e $ ! == _timer_cont_seg -> 0 `i 100  ]
-"207
-[; ;main.c: 207:                 {
+"190
+[; ;main.c: 190:             read_button();
+[e ( _read_button ..  ]
+"191
+[; ;main.c: 191:             if(modo==modo_timer)
+[e $ ! == -> _modo `i -> . `E726 1 `i 100  ]
+"192
+[; ;main.c: 192:             {
 {
-"208
-[; ;main.c: 208:                         timer_cont_seg = 115;
-[e = _timer_cont_seg -> 115 `i ]
-"210
-[; ;main.c: 210:                         timer_cont_min--;
-[e -- _timer_cont_min -> 1 `i ]
-"211
-[; ;main.c: 211:                         if(timer_cont_min == 1)
-[e $ ! == _timer_cont_min -> 1 `i 101  ]
-"212
-[; ;main.c: 212:                         {
-{
-"213
-[; ;main.c: 213:                             GP2 = 0;
-[e = _GP2 -> -> 0 `i `b ]
-"214
-[; ;main.c: 214:                             _delay((unsigned long)((500)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"215
-[; ;main.c: 215:                             GP2 = 1;
+"193
+[; ;main.c: 193:                 GP2=1;
 [e = _GP2 -> -> 1 `i `b ]
-"216
-[; ;main.c: 216:                         }
+"194
+[; ;main.c: 194:                 timer_cont_seg--;
+[e -- _timer_cont_seg -> 1 `i ]
+"195
+[; ;main.c: 195:                 timer_out = 0;
+[e = _timer_out -> -> 0 `i `uc ]
+"196
+[; ;main.c: 196:                 TMR1ON=1;
+[e = _TMR1ON -> -> 1 `i `b ]
+"198
+[; ;main.c: 198:                 if(timer_cont_seg == 0)
+[e $ ! == _timer_cont_seg -> 0 `i 101  ]
+"199
+[; ;main.c: 199:                 {
+{
+"200
+[; ;main.c: 200:                         timer_cont_seg = 115;
+[e = _timer_cont_seg -> 115 `i ]
+"202
+[; ;main.c: 202:                         timer_cont_min--;
+[e -- _timer_cont_min -> 1 `i ]
+"210
+[; ;main.c: 210:                 }
 }
 [e :U 101 ]
-"218
-[; ;main.c: 218:                 }
+"211
+[; ;main.c: 211:             }
 }
 [e :U 100 ]
+"212
+[; ;main.c: 212:             if(modo==modo_sempre_ligado)
+[e $ ! == -> _modo `i -> . `E726 2 `i 102  ]
+"213
+[; ;main.c: 213:             {
+{
+"215
+[; ;main.c: 215:                 timer_out = 0;
+[e = _timer_out -> -> 0 `i `uc ]
+"216
+[; ;main.c: 216:                 TMR1ON = 1;
+[e = _TMR1ON -> -> 1 `i `b ]
 "219
-[; ;main.c: 219:         }
+[; ;main.c: 219:                 GP2=1;
+[e = _GP2 -> -> 1 `i `b ]
+"221
+[; ;main.c: 221:             }
+}
+[e :U 102 ]
+"222
+[; ;main.c: 222:             if (modo==modo_apagado)
+[e $ ! == -> _modo `i -> . `E726 3 `i 103  ]
+"223
+[; ;main.c: 223:             {
+{
+"224
+[; ;main.c: 224:                 timer_out = 0;
+[e = _timer_out -> -> 0 `i `uc ]
+"225
+[; ;main.c: 225:                 TMR1ON = 0;
+[e = _TMR1ON -> -> 0 `i `b ]
+"226
+[; ;main.c: 226:                 GP2=0;
+[e = _GP2 -> -> 0 `i `b ]
+"227
+[; ;main.c: 227:                 timer_cont_min=0;
+[e = _timer_cont_min -> 0 `i ]
+"228
+[; ;main.c: 228:             }
+}
+[e :U 103 ]
+"229
+[; ;main.c: 229:         }
 }
 [e :U 99 ]
-"223
-[; ;main.c: 223:     }
+"231
+[; ;main.c: 231:     }
 }
 [e :U 96 ]
-"197
-[; ;main.c: 197:     while(timer_cont_min > 0)
+"186
+[; ;main.c: 186:     while(timer_cont_min > 0)
 [e $ > _timer_cont_min -> 0 `i 97  ]
 [e :U 98 ]
-"224
-[; ;main.c: 224:     TMR1ON = 0;
-[e = _TMR1ON -> -> 0 `i `b ]
-"225
-[; ;main.c: 225:     GP2 = 0;
-[e = _GP2 -> -> 0 `i `b ]
-"226
-[; ;main.c: 226:     modo = modo_desligado;
+"232
+[; ;main.c: 232:     modo=modo_desligado;
 [e = _modo -> . `E726 0 `uc ]
-"227
-[; ;main.c: 227: }
+"233
+[; ;main.c: 233:     TMR1ON = 0;
+[e = _TMR1ON -> -> 0 `i `b ]
+"234
+[; ;main.c: 234:     GP2=0;
+[e = _GP2 -> -> 0 `i `b ]
+"235
+[; ;main.c: 235:     timer_out = 0;
+[e = _timer_out -> -> 0 `i `uc ]
+"236
+[; ;main.c: 236:     while(GP0==0);
+[e $U 104  ]
+[e :U 105 ]
+[e :U 104 ]
+[e $ == -> _GP0 `i -> 0 `i 105  ]
+[e :U 106 ]
+"238
+[; ;main.c: 238: }
 [e :UE 95 ]
 }
-"230
-[; ;main.c: 230: void read_button(void)
+"241
+[; ;main.c: 241: void read_button(void)
 [v _read_button `(v ~T0 @X0 1 ef ]
-"231
-[; ;main.c: 231: {
+"242
+[; ;main.c: 242: {
 {
 [e :U _read_button ]
 [f ]
-"232
-[; ;main.c: 232:     if(GP0 != 1)
-[e $ ! != -> _GP0 `i -> 1 `i 103  ]
-"233
-[; ;main.c: 233:     {
-{
-"234
-[; ;main.c: 234:         _delay((unsigned long)((10)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"235
-[; ;main.c: 235:         if(GP0 != 1)
-[e $ ! != -> _GP0 `i -> 1 `i 104  ]
-"236
-[; ;main.c: 236:         {
-{
-"238
-[; ;main.c: 238:             switch(modo){
-[e $U 106  ]
-{
-"239
-[; ;main.c: 239:                 case modo_desligado:{
-[e :U 107 ]
-{
-"240
-[; ;main.c: 240:                                         modo = modo_timer;
-[e = _modo -> . `E726 1 `uc ]
-"241
-[; ;main.c: 241:                                         break;
-[e $U 105  ]
-"242
-[; ;main.c: 242:                                     }
-}
 "243
-[; ;main.c: 243:                 case modo_timer: {
-[e :U 108 ]
-{
+[; ;main.c: 243:     if(GP0 != 1)
+[e $ ! != -> _GP0 `i -> 1 `i 108  ]
 "244
-[; ;main.c: 244:                                        count_button_press++;
-[e ++ _count_button_press -> -> 1 `i `uc ]
-"245
-[; ;main.c: 245:                                        if(count_button_press > 5)
-[e $ ! > -> _count_button_press `i -> 5 `i 109  ]
-"246
-[; ;main.c: 246:                                        {
+[; ;main.c: 244:     {
 {
+"245
+[; ;main.c: 245:         _delay((unsigned long)((50)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"246
+[; ;main.c: 246:         if(GP0 != 1)
+[e $ ! != -> _GP0 `i -> 1 `i 109  ]
 "247
-[; ;main.c: 247:                                            modo = modo_sempre_ligado;
-[e = _modo -> . `E726 2 `uc ]
-"248
-[; ;main.c: 248:                                            count_button_press = 0;
-[e = _count_button_press -> -> 0 `i `uc ]
+[; ;main.c: 247:         {
+{
 "249
-[; ;main.c: 249:                                        }
+[; ;main.c: 249:             switch(modo){
+[e $U 111  ]
+{
+"250
+[; ;main.c: 250:                 case modo_desligado:{
+[e :U 112 ]
+{
+"251
+[; ;main.c: 251:                                         modo = modo_timer;
+[e = _modo -> . `E726 1 `uc ]
+"252
+[; ;main.c: 252:                                         count_button_press=0;
+[e = _count_button_press -> -> 0 `i `uc ]
+"253
+[; ;main.c: 253:                                         break;
+[e $U 110  ]
+"254
+[; ;main.c: 254:                                     }
+}
+"255
+[; ;main.c: 255:                 case modo_timer: {
+[e :U 113 ]
+{
+"256
+[; ;main.c: 256:                                        count_button_press++;
+[e ++ _count_button_press -> -> 1 `i `uc ]
+"257
+[; ;main.c: 257:                                        if(count_button_press > 5)
+[e $ ! > -> _count_button_press `i -> 5 `i 114  ]
+"258
+[; ;main.c: 258:                                        {
+{
+"259
+[; ;main.c: 259:                                            modo = modo_sempre_ligado;
+[e = _modo -> . `E726 2 `uc ]
+"260
+[; ;main.c: 260:                                            count_button_press = 0;
+[e = _count_button_press -> -> 0 `i `uc ]
+"261
+[; ;main.c: 261:                                        }
+}
+[e :U 114 ]
+"262
+[; ;main.c: 262:                                        break;
+[e $U 110  ]
+"263
+[; ;main.c: 263:                                  }
+}
+"265
+[; ;main.c: 265:                 case modo_sempre_ligado: {
+[e :U 115 ]
+{
+"266
+[; ;main.c: 266:                                             count_button_press++;
+[e ++ _count_button_press -> -> 1 `i `uc ]
+"267
+[; ;main.c: 267:                                             if(count_button_press > 5)
+[e $ ! > -> _count_button_press `i -> 5 `i 116  ]
+"268
+[; ;main.c: 268:                                             {
+{
+"269
+[; ;main.c: 269:                                                 modo = modo_apagado;
+[e = _modo -> . `E726 3 `uc ]
+"270
+[; ;main.c: 270:                                                 count_button_press = 0;
+[e = _count_button_press -> -> 0 `i `uc ]
+"271
+[; ;main.c: 271:                                             }
+}
+[e :U 116 ]
+"272
+[; ;main.c: 272:                                             break;
+[e $U 110  ]
+"273
+[; ;main.c: 273:                                           }
+}
+"280
+[; ;main.c: 280:             }
+}
+[e $U 110  ]
+[e :U 111 ]
+[e [\ -> _modo `i , $ . `E726 0 112
+ , $ . `E726 1 113
+ , $ . `E726 2 115
+ 110 ]
+[e :U 110 ]
+"281
+[; ;main.c: 281:         }
 }
 [e :U 109 ]
-"250
-[; ;main.c: 250:                                        break;
-[e $U 105  ]
-"251
-[; ;main.c: 251:                                  }
+"282
+[; ;main.c: 282:     }
 }
-"253
-[; ;main.c: 253:                 case modo_sempre_ligado: {
-[e :U 110 ]
-{
-"254
-[; ;main.c: 254:                                             count_button_press++;
-[e ++ _count_button_press -> -> 1 `i `uc ]
-"255
-[; ;main.c: 255:                                             if(count_button_press > 50)
-[e $ ! > -> _count_button_press `i -> 50 `i 111  ]
-"256
-[; ;main.c: 256:                                             {
-{
-"257
-[; ;main.c: 257:                                                 modo = modo_desligado;
-[e = _modo -> . `E726 0 `uc ]
-"258
-[; ;main.c: 258:                                                 count_button_press = 0;
-[e = _count_button_press -> -> 0 `i `uc ]
-"259
-[; ;main.c: 259:                                             }
-}
-[e :U 111 ]
-"260
-[; ;main.c: 260:                                             break;
-[e $U 105  ]
-"261
-[; ;main.c: 261:                                           }
-}
-"263
-[; ;main.c: 263:             }
-}
-[e $U 105  ]
-[e :U 106 ]
-[e [\ -> _modo `i , $ . `E726 0 107
- , $ . `E726 1 108
- , $ . `E726 2 110
- 105 ]
-[e :U 105 ]
-"264
-[; ;main.c: 264:         }
-}
-[e :U 104 ]
-"265
-[; ;main.c: 265:     }
-}
-[e :U 103 ]
-"266
-[; ;main.c: 266: }
-[e :UE 102 ]
+[e :U 108 ]
+"283
+[; ;main.c: 283: }
+[e :UE 107 ]
 }
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"275
-[; ;main.c: 275: void __attribute__((picinterrupt(("")))) isr(void){
+"299
+[; ;main.c: 299: void __attribute__((picinterrupt(("")))) isr(void){
 [v _isr `(v ~T2 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"281
-[; ;main.c: 281:     if ((GPIE && GPIF) == 1){
-[e $ ! == -> && _GPIE _GPIF `i -> 1 `i 113  ]
+"316
+[; ;main.c: 316:     if(TMR1IE == 1 && TMR1IF== 1)
+[e $ ! && == -> _TMR1IE `i -> 1 `i == -> _TMR1IF `i -> 1 `i 118  ]
+"317
+[; ;main.c: 317:     {
 {
-"282
-[; ;main.c: 282:         if (GP0 == 1 || GP0 == 0){
-[e $ ! || == -> _GP0 `i -> 1 `i == -> _GP0 `i -> 0 `i 114  ]
-{
-"283
-[; ;main.c: 283:         GPIF = 0;
-[e = _GPIF -> -> 0 `i `b ]
-"284
-[; ;main.c: 284:         }
-}
-[e :U 114 ]
-"285
-[; ;main.c: 285:     }
-}
-[e :U 113 ]
-"292
-[; ;main.c: 292:     if(TMR1IE == 1 && TMR1IF== 1)
-[e $ ! && == -> _TMR1IE `i -> 1 `i == -> _TMR1IF `i -> 1 `i 115  ]
-"293
-[; ;main.c: 293:     {
-{
-"294
-[; ;main.c: 294:         timer_out = 1;
+"318
+[; ;main.c: 318:         timer_out = 1;
 [e = _timer_out -> -> 1 `i `uc ]
-"295
-[; ;main.c: 295:         TMR1IF = 0;
+"319
+[; ;main.c: 319:         TMR1IF = 0;
 [e = _TMR1IF -> -> 0 `i `b ]
-"296
-[; ;main.c: 296:         TMR1ON = 0;
+"320
+[; ;main.c: 320:         TMR1ON = 0;
 [e = _TMR1ON -> -> 0 `i `b ]
-"297
-[; ;main.c: 297:         TMR1L = 0x00;
+"321
+[; ;main.c: 321:         TMR1L = 0x00;
 [e = _TMR1L -> -> 0 `i `uc ]
-"298
-[; ;main.c: 298:         TMR1H = 0x00;
+"322
+[; ;main.c: 322:         TMR1H = 0x00;
 [e = _TMR1H -> -> 0 `i `uc ]
-"299
-[; ;main.c: 299:     }
+"323
+[; ;main.c: 323:     }
 }
-[e :U 115 ]
-"301
-[; ;main.c: 301: }
-[e :UE 112 ]
+[e :U 118 ]
+"325
+[; ;main.c: 325: }
+[e :UE 117 ]
 }

@@ -1210,8 +1210,8 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "/opt/microchip/xc8/v2.10/pic/include/xc.h" 2 3
 # 28 "main.c" 2
-# 79 "main.c"
-enum {modo_desligado,modo_timer,modo_sempre_ligado};
+# 77 "main.c"
+enum {modo_desligado,modo_timer,modo_sempre_ligado,modo_apagado};
 char modo;
 char timer_out;
 char count_button_press;
@@ -1225,10 +1225,7 @@ void config_var(void);
 void timer_on(void);
 void read_button(void);
 
-
-
-void config_TM1(void);
-
+void config_Timer1(void);
 
 void __attribute__((picinterrupt(("")))) isr(void);
 
@@ -1241,7 +1238,7 @@ int main(void) {
     config_osc();
     config_mcu();
     config_var();
-    config_TM1();
+    config_Timer1();
 
     while (1)
     {
@@ -1286,8 +1283,8 @@ void config_mcu(void){
     GP5 = 0;
     GIE = 1;
     PEIE= 1;
-    GPIE = 1;
-    IOC0= 1;
+
+
 
 }
 
@@ -1298,13 +1295,7 @@ void config_mcu(void){
 void config_var(void){
    count_button_press = 0;
    modo = modo_desligado;
-
-
-
-
-
-
-    timer_out = 0;
+   timer_out = 0;
 }
 
 
@@ -1313,7 +1304,7 @@ void config_var(void){
 
 
 
-void config_TM1(void){
+void config_Timer1(void){
     T1CON = 0b00110000;
     TMR1IE = 1;
     TMR1L = 0x00;
@@ -1328,37 +1319,59 @@ void timer_on(void){
     timer_cont_min = 3;
     timer_cont_seg = 115;
     TMR1ON = 1;
-    GP2 = 1;
+
     while(timer_cont_min > 0)
     {
         if(timer_out == 1)
         {
-
-            timer_cont_seg--;
-            timer_out = 0;
-            TMR1ON=1;
+            read_button();
+            if(modo==modo_timer)
+            {
+                GP2=1;
+                timer_cont_seg--;
+                timer_out = 0;
+                TMR1ON=1;
 
                 if(timer_cont_seg == 0)
                 {
                         timer_cont_seg = 115;
 
                         timer_cont_min--;
-                        if(timer_cont_min == 1)
-                        {
-                            GP2 = 0;
-                            _delay((unsigned long)((500)*(4000000/4000.0)));
-                            GP2 = 1;
-                        }
+
+
+
+
+
+
 
                 }
+            }
+            if(modo==modo_sempre_ligado)
+            {
+
+                timer_out = 0;
+                TMR1ON = 1;
+
+
+                GP2=1;
+
+            }
+            if (modo==modo_apagado)
+            {
+                timer_out = 0;
+                TMR1ON = 0;
+                GP2=0;
+                timer_cont_min=0;
+            }
         }
 
-
-
     }
+    modo=modo_desligado;
     TMR1ON = 0;
-    GP2 = 0;
-    modo = modo_desligado;
+    GP2=0;
+    timer_out = 0;
+    while(GP0==0);
+
 }
 
 
@@ -1366,13 +1379,14 @@ void read_button(void)
 {
     if(GP0 != 1)
     {
-        _delay((unsigned long)((10)*(4000000/4000.0)));
+        _delay((unsigned long)((50)*(4000000/4000.0)));
         if(GP0 != 1)
         {
 
             switch(modo){
                 case modo_desligado:{
                                         modo = modo_timer;
+                                        count_button_press=0;
                                         break;
                                     }
                 case modo_timer: {
@@ -1387,36 +1401,26 @@ void read_button(void)
 
                 case modo_sempre_ligado: {
                                             count_button_press++;
-                                            if(count_button_press > 50)
+                                            if(count_button_press > 5)
                                             {
-                                                modo = modo_desligado;
+                                                modo = modo_apagado;
                                                 count_button_press = 0;
                                             }
                                             break;
                                           }
 
+
+
+
+
+
             }
         }
     }
 }
-# 275 "main.c"
+# 299 "main.c"
 void __attribute__((picinterrupt(("")))) isr(void){
-
-
-
-
-
-    if ((GPIE && GPIF) == 1){
-        if (GP0 == 1 || GP0 == 0){
-        GPIF = 0;
-        }
-    }
-
-
-
-
-
-
+# 316 "main.c"
     if(TMR1IE == 1 && TMR1IF== 1)
     {
         timer_out = 1;
