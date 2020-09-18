@@ -22,5 +22,5 @@ If the button is pressed more than 15 seconds on the timer mode off, the light i
 
 
 ## VIDEO (In portuguese language)
-[![Watch the video.](http://img.youtube.com/vi/sDOyX_M_l8k/0.jpg)](http://www.youtube.com/watch?v=sDOyX_M_l8k "General Timer")
+[![The timer light working](http://img.youtube.com/vi/0DHHudRgUJE/0.jpg)](http://www.youtube.com/watch?v=0DHHudRgUJE "Timer Light Video")
 
