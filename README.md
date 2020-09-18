@@ -6,7 +6,7 @@ The code was written in C language and was used the MPLABX to compile and build 
 The code comments is in the portuguese language. There is .pdf files with the schematics and pcb layout attached.
 
 ## How it works
-The device only has a push button to turn the light on and off, and change the operation modes. 
+The device has only a push button to turn the light on and off, and change the operation modes. 
 
 ### 1- Turning the light on with timer mode on:
 A single press of the button, the device wake up and turn the light on with a timer of 40 minutes. You can change the color light pressing the button. 
