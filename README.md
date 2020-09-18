@@ -3,7 +3,7 @@
 ## About
 This is a repository with a microcontroller firmware of a timer device implemented in a table light. The device was built using a Microchip PIC12F675 microcontroller. 
 The code was written in C language and was used the MPLABX to compile and build the program. It was built a PCB to be added to the table light.
-The code comments is in the portuguese language. There is .pdf files with the schematics and pcb layout attached.
+The code comments is in portuguese language. There are .pdf files with the schematics and pcb layout attached.
 
 ## How it works
 The device has only a push button to turn the light on and off, and change the operation modes. 
