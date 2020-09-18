@@ -7,7 +7,7 @@
 # 1 "/opt/microchip/xc8/v2.10/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 12 "main.c"
+# 21 "main.c"
 #pragma config FOSC = INTRCIO
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -115,7 +115,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 #pragma printf_check(sprintf) const
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
-# 26 "main.c" 2
+# 35 "main.c" 2
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c90/stdlib.h" 1 3
 
 
@@ -211,7 +211,7 @@ extern char * ltoa(char * buf, long val, int base);
 extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
-# 27 "main.c" 2
+# 36 "main.c" 2
 # 1 "/opt/microchip/xc8/v2.10/pic/include/xc.h" 1 3
 # 18 "/opt/microchip/xc8/v2.10/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -1209,12 +1209,16 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "/opt/microchip/xc8/v2.10/pic/include/xc.h" 2 3
-# 28 "main.c" 2
-# 77 "main.c"
-enum {modo_desligado,modo_timer,modo_sempre_ligado,modo_apagado};
-char modo;
+# 37 "main.c" 2
+# 76 "main.c"
+enum {modo_desligado=0,modo_timer,modo_sempre_ligado,modo_apagado};
+char modo_atual;
 char timer_out;
-char count_button_press;
+unsigned int count_button_press;
+unsigned int count_button_press2;
+char primeira_vez_loop;
+
+
 
 
 
@@ -1222,9 +1226,9 @@ char count_button_press;
 void config_osc(void);
 void config_mcu(void);
 void config_var(void);
-void timer_on(void);
-void read_button(void);
-
+void mode_on(void);
+void read_mode(void);
+void modo_lowpower(void);
 void config_Timer1(void);
 
 void __attribute__((picinterrupt(("")))) isr(void);
@@ -1233,24 +1237,17 @@ void __attribute__((picinterrupt(("")))) isr(void);
 
 
 
-int main(void) {
-
+int main(void)
+{
     config_osc();
-    config_mcu();
     config_var();
     config_Timer1();
+    config_mcu();
 
     while (1)
     {
-
-        read_button();
-        if(modo == modo_timer)
-        {
-            timer_on();
-        }
-
+        mode_on();
     }
-
 
     return (0);
 }
@@ -1259,32 +1256,33 @@ int main(void) {
 
 
 
-void config_osc(void){
-__asm("BSF STATUS, 5");
-__asm ("CALL 3FFh");
-__asm ("MOVWF OSCCAL");
-__asm ("BCF STATUS, 5");
+
+void config_osc(void)
+{
+     __asm ("BSF STATUS, 5");
+     __asm ("CALL 3FFh");
+     __asm ("MOVWF OSCCAL");
+     __asm ("BCF STATUS, 5");
 }
 
 
 
 
 
-
-void config_mcu(void){
+void config_mcu(void)
+{
     ANSEL = 0b00000000;
     CMCON = 0b00000111;
     TRISIO = 0b11001001;
     WPU = 0b00000000;
-    GP0 = 0;
     GP1 = 0;
     GP2 = 0;
     GP4 = 0;
     GP5 = 0;
     GIE = 1;
-    PEIE= 1;
-
-
+    GPIE = 1;
+    IOC0 = 1;
+    PEIE = 1;
 
 }
 
@@ -1292,142 +1290,216 @@ void config_mcu(void){
 
 
 
-void config_var(void){
+void config_var(void)
+{
    count_button_press = 0;
-   modo = modo_desligado;
+   modo_atual = modo_desligado;
    timer_out = 0;
+   primeira_vez_loop = 0;
+
 }
-
-
-
-
-
-
-
-void config_Timer1(void){
+# 171 "main.c"
+void config_Timer1(void)
+{
     T1CON = 0b00110000;
-    TMR1IE = 1;
+    TMR1IF = 0;
     TMR1L = 0x00;
     TMR1H = 0x00;
+    TMR1IE = 1;
+    TMR1ON = 0;
 }
 
 
-void timer_on(void){
-    int timer_cont_seg;
-    int timer_cont_min;
 
-    timer_cont_min = 3;
-    timer_cont_seg = 115;
-    TMR1ON = 1;
 
-    while(timer_cont_min > 0)
+
+
+void mode_on(void)
+{
+
+    unsigned int timer_count_seg;
+    unsigned int timer_count_min;
+
+
+    if(modo_atual == modo_timer)
     {
-        if(timer_out == 1)
+        timer_count_seg = 114;
+        timer_count_min = 40;
+
+        TMR1ON = 1;
+
+
+        while(timer_count_min != 0 && modo_atual == modo_timer)
         {
-            read_button();
-            if(modo==modo_timer)
-            {
-                GP2=1;
-                timer_cont_seg--;
-                timer_out = 0;
-                TMR1ON=1;
 
-                if(timer_cont_seg == 0)
-                {
-                        timer_cont_seg = 115;
-
-                        timer_cont_min--;
-
-
-
-
-
-
-
-                }
-            }
-            if(modo==modo_sempre_ligado)
+            GP2 = 1;
+            TMR1ON = 1;
+            if(timer_out == 1)
             {
 
+                timer_count_seg--;
                 timer_out = 0;
                 TMR1ON = 1;
 
-
-                GP2=1;
-
+                if(timer_count_seg == 0)
+                {
+                    timer_count_seg = 114;
+                    timer_count_min--;
+                }
             }
-            if (modo==modo_apagado)
+
+            if(timer_count_min == 1 && timer_count_seg == 114)
             {
-                timer_out = 0;
-                TMR1ON = 0;
-                GP2=0;
-                timer_cont_min=0;
+                GP2 = 0;
+                _delay((unsigned long)((500)*(4000000/4000.0)));
+                GP2 = 1;
             }
+
         }
-
-    }
-    modo=modo_desligado;
-    TMR1ON = 0;
-    GP2=0;
-    timer_out = 0;
-    while(GP0==0);
-
-}
-
-
-void read_button(void)
-{
-    if(GP0 != 1)
-    {
-        _delay((unsigned long)((50)*(4000000/4000.0)));
-        if(GP0 != 1)
+        if(modo_atual != modo_sempre_ligado)
         {
-
-            switch(modo){
-                case modo_desligado:{
-                                        modo = modo_timer;
-                                        count_button_press=0;
-                                        break;
-                                    }
-                case modo_timer: {
-                                       count_button_press++;
-                                       if(count_button_press > 5)
-                                       {
-                                           modo = modo_sempre_ligado;
-                                           count_button_press = 0;
-                                       }
-                                       break;
-                                 }
-
-                case modo_sempre_ligado: {
-                                            count_button_press++;
-                                            if(count_button_press > 5)
-                                            {
-                                                modo = modo_apagado;
-                                                count_button_press = 0;
-                                            }
-                                            break;
-                                          }
-
-
-
-
-
-
-            }
+            modo_atual = modo_apagado;
         }
     }
+    if(modo_atual == modo_sempre_ligado)
+    {
+        TMR1ON = 0;
+        timer_out = 0;
+        if (primeira_vez_loop == 1)
+        {
+            GP2 = 0;
+            _delay((unsigned long)((1000)*(4000000/4000.0)));
+            primeira_vez_loop = 0;
+        }
+            GP2 = 1;
+
+    }
+
+    if( modo_atual == modo_apagado)
+    {
+        timer_out = 0;
+        TMR1ON = 0;
+        GP2= 0;
+        while(GP0 == 0);
+        _delay((unsigned long)((100)*(4000000/4000.0)));
+        if(GP0 == 1)
+        {
+            timer_count_min=0;
+            timer_count_seg=0;
+            modo_atual=modo_desligado;
+        }
+
+    }
+
+    if(modo_atual == modo_desligado)
+    {
+      _delay((unsigned long)((3000)*(4000000/4000.0)));
+      modo_lowpower();
+    }
 }
-# 299 "main.c"
+
+
+
+
+
+
+void read_mode(void)
+{
+    count_button_press2 = 0;
+
+    switch(modo_atual)
+    {
+        case modo_desligado:
+                                count_button_press = 0;
+                                modo_atual = modo_timer;
+                                _delay((unsigned long)((1000)*(4000000/4000.0)));
+                                break;
+
+        case modo_timer:
+                                while(GP0==0 && count_button_press2<=100)
+                                {
+                                    count_button_press++;
+                                    if(count_button_press == 1000)
+                                    {
+                                        count_button_press2 ++;
+                                        count_button_press=0;
+                                    }
+                                }
+                                if(count_button_press2 >= 100)
+                                {
+                                    modo_atual = modo_sempre_ligado;
+                                    primeira_vez_loop = 1;
+                                }
+                                count_button_press = 0;
+                                count_button_press2 = 0;
+                                break;
+
+
+        case modo_sempre_ligado:
+                                    while(GP0==0 && count_button_press2 <=100)
+                                    {
+                                        count_button_press++;
+                                        if(count_button_press == 1000)
+                                        {
+                                            count_button_press2++;
+                                            count_button_press=0;
+                                        }
+                                    }
+                                    if(count_button_press2 >= 100)
+                                    {
+                                        modo_atual = modo_apagado;
+                                    }
+                                    count_button_press = 0;
+                                    count_button_press2 = 0;
+                                    break;
+# 332 "main.c"
+    }
+}
+
+
+
+
+void modo_lowpower(void)
+{
+    __asm("sleep");
+    __nop();
+    __nop();
+}
+
+
+
+
+
 void __attribute__((picinterrupt(("")))) isr(void){
-# 316 "main.c"
+
+
+
+
+
+    if (GPIE == 1 && GPIF == 1)
+
+    {
+        GPIE = 0;
+
+        if (GP0 == 0)
+        {
+              read_mode();
+        }
+              GPIE = 1;
+              GPIF = 0;
+    }
+
+
+
+
+
     if(TMR1IE == 1 && TMR1IF== 1)
     {
         timer_out = 1;
-        TMR1IF = 0;
         TMR1ON = 0;
         TMR1L = 0x00;
         TMR1H = 0x00;
+        TMR1IF = 0;
     }
 
 }
